@@ -47,6 +47,7 @@ THE COMPLETE NOVAK LAW SET (1–8) — CANONICAL VERSION
 ⚠️ THIS IS THE PERMANENT, OFFICIAL LIST
 
 ⭐ THE EIGHT NOVAK LAWS OF MACHINE EXECUTION
+
 🟦 LAW 1 — VERIFIED INPUT ONLY
 
 No system may execute a decision unless all input data is cryptographically attested, schema-valid, and provenance-verifiable.
