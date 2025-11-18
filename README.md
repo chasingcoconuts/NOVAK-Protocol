@@ -38,7 +38,7 @@ This ensures:
 
 Private sector deployments require a commercial NOVAK license.
 
-Contact: ***[YOUR EMAIL HERE]***
+Contact: ***mnovak.none@gmail.com***
 
 ---
 
