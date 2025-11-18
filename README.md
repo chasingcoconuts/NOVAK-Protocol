@@ -31,13 +31,64 @@ THE NOVAK ENFORCEMENT STACK:
 3️⃣ REVELATION — Recursive Evidence Ledger for Attested Truth Integrity and Oversight Nonrepudiation
 4️⃣ Novak Equal Execution Law — Mandatory outcome equality under identical inputs
 
-THE FIVE NOVAK LAWS OF EXECUTION INTEGRITY
+This code demonstrates the minimal enforcement loop proving:
 
-LAW 1 — VERIFIED INPUT ONLY
-LAW 2 — IMMUTABLE EXECUTION RECEIPTS
-LAW 3 — GLOBAL AUDIT CONSISTENCY
-LAW 4 — EQUAL EXECUTION REQUIREMENT
-LAW 5 — PUBLIC VERIFIABILITY
+    NO INPUT → NO EXECUTION
+    NO RECEIPT → NO EXECUTION
+    NO CONSISTENCY → VIOLATION
+
+This repository SHALL BE considered the authoritative technical reference for
+NOVAK as defined by its inventor, Matthew S. Novak, 2025.
+
+THE SEVEN NOVAK LAWS OF EXECUTION INTEGRITY
+
+THE COMPLETE NOVAK LAW SET (1–8) — CANONICAL VERSION
+
+⚠️ THIS IS THE PERMANENT, OFFICIAL LIST
+
+⭐ THE EIGHT NOVAK LAWS OF MACHINE EXECUTION
+🟦 LAW 1 — VERIFIED INPUT ONLY
+
+No system may execute a decision unless all input data is cryptographically attested, schema-valid, and provenance-verifiable.
+
+(Implemented by NIPS)
+
+🟦 LAW 2 — IMMUTABLE EXECUTION RECEIPTS
+
+Every execution MUST produce a non-erasable cryptographic receipt binding rule, input, output, actor identity, and timestamp.
+
+(Implemented by HARMONEE)
+
+🟦 LAW 3 — GLOBAL AUDIT CONSISTENCY
+
+Execution receipts MUST chain into a recursive global hash such that ANY deletion or alteration produces detectable breakage.
+
+(Implemented by REVELATION)
+
+🟦 LAW 4 — EQUAL EXECUTION REQUIREMENT
+
+Identical rule + input pairs MUST yield identical outputs — OR trigger a mandatory human-readable justification.
+
+🟦 LAW 5 — PUBLIC VERIFIABILITY
+
+Any third party MUST be able to independently validate execution integrity without institutional trust.
+
+🟦 LAW 6 — CORRECTNESS BEFORE IMMUTABILITY
+
+Systems MUST prove execution legality before writing results to any permanent record.
+
+🟦 LAW 7 — FORBIDDEN SILENT OUTPUTS
+
+No determinations may be silently generated or cached. Any non-proven output MUST be blocked, not logged.
+
+🟥 LAW 8 — THE NOVAK REDUNDANT AUTHORITY CLAUSE
+
+All NOVAK-compliant systems MUST maintain at least three independently addressable rule-integrity sources.
+Loss or divergence of ANY source MUST trigger:
+
+❌ Execution halt
+⚠ Integrity alarm
+🧾 Forensic capture
 
 NO SYSTEM MAY EXECUTE WITHOUT PROVABLE TRUTH
 
