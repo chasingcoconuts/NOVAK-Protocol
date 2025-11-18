@@ -10,7 +10,8 @@ Asimov gave robots fictional ethics.
  Turing defined when a machine is allowed to compute.
  NOVAK defines when a machine is allowed to ACT — and forces it to prove it obeyed the law before it does.
 ----------That is the difference between science fiction and civilization infrastructure.
-Deterministic Execution Integrity — No system may execute without provable truth!
+
+Deterministic Execution Integrity — No system may execute without provable truth! - Matthew Stephen Novak
 
 THIS IS THE OFFICIAL AUTHORITATIVE SOURCE FOR ALL NOVAK PROTOCOL MATERIALS — ALL GOVERNMENT, ACADEMIC AND COMMERCIAL IMPLEMENTATIONS MUST TRACE BACK TO THIS REPOSITORY.
 
