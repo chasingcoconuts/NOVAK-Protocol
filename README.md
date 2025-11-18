@@ -26,7 +26,7 @@ First Published: 2025
 
 THE NOVAK ENFORCEMENT STACK:
 
-1️⃣ NIPS — Normalized Input Proof Set
+1️⃣ NIPS — Novak Input Proof Set
 2️⃣ HARMONEE — Hash-Attested Regulatory Machine Output Notarized Execution Evidence
 3️⃣ REVELATION — Recursive Evidence Ledger for Attested Truth Integrity and Oversight Nonrepudiation
 4️⃣ Novak Equal Execution Law — Mandatory outcome equality under identical inputs
