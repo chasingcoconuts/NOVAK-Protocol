@@ -1,23 +1,41 @@
 ⚖️ The Novak Laws of Execution Integrity(12 Laws + Physical Safety Addendum) Canonical 2025 Codex
+
 🟥 FOUNDATIONAL LAW Law ID Law NameCore RequirementNOVAK LAW ZEROPRIMACY OF HUMAN SAFETYNo autonomous system may directly or indirectly cause human harm unless cryptographically proven lawful, necessary, and executed under due process constraints. (Supreme Clause)
+
 🟩 CORE EXECUTION INTEGRITY LAWS (L1 – L12)Law IDLaw NameCore RequirementLAW 1VERIFIED INPUT ONLY (NIPS)Execution requires all inputs to be cryptographically attested, schema-valid, and provenance-verifiable. Unverified inputs MUST cause rejection.
+
 🟩 LAW 2 EXECUTION RECEIPT IMMUTABILITY (HARMONEE) Every execution MUST produce a non-erasable cryptographic receipt binding Rule_ID, Input_Hash, Output_Hash, Actor_ID, and Timestamp.
+
 🟩 LAW 3 GLOBAL AUDIT CONSISTENCY (REVELATION) All execution receipts MUST chain into a recursive global hash such that any deletion, alteration, or reordering causes irreversible chain breakage.
+
 🟩 LAW 4 EQUAL EXECUTION REQUIREMENT If identical inputs ($D_1 \equiv D_2$) lead to different outputs ($O_1 \neq O_2$), the system MUST produce a cryptographically-enforced justification ($J$).
+
 🟩 LAW 5 PUBLIC VERIFIABILITY Execution integrity MUST be independently verifiable by any third party using only public cryptographic materials and procedures, WITHOUT institutional trust.
+
 🟩 LAW 6 CORRECTNESS BEFORE IMMUTABILITY No system may write to a permanent ledger unless it has first proven the legality and correctness of its output ("Prove THEN record").
+
 🟩 LAW 7 FORBIDDEN SILENT OUTPUTS No system may generate unproven, unlogged, or untraceable decisions. Any violation MUST trigger an execution halt, integrity alarm, and automatic forensic capture.LAW 8THE NOVAK REDUNDANT AUTHORITY CLAUSEEvery compliant system MUST maintain $\ge 3$ independent integrity anchors (e.g., hash authorities). Divergence $\implies$ System MUST HALT.
+
 🟩 LAW 9REALITY CONSISTENCY RULEExecution is only SUCCESSFUL if the external outcome reality matches the output claims (e.g., "benefits paid" $\implies$ funds must exist).
+
 🟩 LAW 10 MACHINE ACCOUNTABILITY PRINCIPLE Systems affecting Safety, Rights, or Legal Status MUST execute under cryptographically enforceable legal authority, not trust or policy.
+
 🟩 LAW 11 HUMAN OVERRIDE SUPREMACYHuman overrides MAY exist, but all overrides MUST be cryptographically signed, immutable, and publicly attributable. No anonymous authority.
+
 🟩 LAW 12 MODEL AND DATA PROVENANCE (ATTESTATION)Any decision-making model ($R$) must be cryptographically attested, including Model Hash, Training Data Set Hash, and Training Process Provenance.
 
 ⚠️ THE PHYSICAL SAFETY ADDENDUM (PS)(Mandatory for physical-actuation systems: robots, medical devices, military AI, etc.)
+
 Addendum ID Requirement NameCore Mandate
+
 PS-1NO UNPROVEN ACTUATION A machine may not perform a physical action unless it can produce a cryptographically verifiable safety proof.
+
 PS-2NON-DESTRUCTION REQUIREMENT A machine may not intentionally destroy biological life, property, or structure unless legally authorized, fully logged, and proven necessary.
+
 PS-3HAZARD PREVENTION DUTY If a compliant system detects a life-threatening hazard, it must attempt mitigation UNLESS doing so violates superior law.
+
 PS-4PROOF BEFORE FORCE Any autonomous use of Mechanical force, Actuator motion, or Weapon discharge MUST produce a safety proof and decision provenance, like a HARMONEE receipt.
+
 PS-5HARM EVIDENCE REQUIREMENT All physically harmful outcomes MUST produce a cryptographically signed incident receipt, identical in structure to HARMONEE logs.
 
 Any alteration to the model, data, or process invalidates the execution chain.
