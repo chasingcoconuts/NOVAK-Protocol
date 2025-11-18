@@ -4,29 +4,44 @@ Law ID,Law Name,Formal Logical/Cryptographic Condition,Primary Function
 🛑 LAW ZERO,PRIMACY OF HUMAN SAFETY,¬(Harm) UNLESS (SAuthority​(Lawful)∧DueProcess),Ethical/Legal Constraint
 
 LAW 1,VERIFIED INPUT ONLY (NIPS),Execute⟺(SchemaValid(D)∧Verify(SSource​(H(D)))),Data Integrity
+
 LAW 2,EXECUTION RECEIPT IMMUTABILITY (HARMONEE),$\text{Receipt} = H(R_{\text{ID}} \| H(D) \| H(O) \| \text{Actor}_{\text{ID}} \| \text{Timesta$,Atomic Accountability
+
 LAW 3,GLOBAL AUDIT CONSISTENCY (REVELATION),∀n:Ln​=H(Ln−1​∥Receiptn​,Historical Integrity
+
 LAW 4,EQUAL EXECUTION REQ.,IF (D1​≡D2​)∧(R(D1​)=R(D2​))⟹MUST Produce J where S(H(J)),Algorithmic Fairness
+
 LAW 5,PUBLIC VERIFIABILITY,"∀Verifier V:V(Receipt,PublicKeys)=TRUE",Transparency
+
 LAW 6,CORRECTNESS BEFORE IMMUTABILITY,H(LegalityProof)⟹WriteTo(L),"The ""Prove THEN Record"" Principle"
+
 LAW 7,FORBIDDEN SILENT OUTPUTS,¬(Decision∧¬Logged)⟹HALT∧LogForensics,Complete Logging
+
 LAW 8,REDUNDANT AUTHORITY,State1​≡State2​≡State3​ IF ¬(Consensus)⟹HALT,System Resilience
+
 LAW 9,REALITY CONSISTENCY RULE,OutputClaim(O)⟺Verify(SOracle​(H(RealityMatch))),Physical Truthfulness
+
 LAW 10,MACHINE ACCOUNTABILITY,R⊂H(LegalCodeID​),Legal Compliance
+
 LAW 11,HUMAN OVERRIDE SUPREMACY,Override⟹Logged(SHuman​(OverrideAction)),Final Human Control
+
 LAW 12,MODEL AND DATA PROVENANCE,Execute⟺Verify(SDev​(ModelHash∥DataHash∥ProcHash,AI Model Integrity
+
 LAW 13,DYNAMIC REDUNDANCY LIMIT,If (Latency>Tmax​)∧(¬HarmRisk)⟹TempSet(N=2)∧Log(Risk),High-Speed Liveness
+
 LAW 14,PROOF-OF-LIVENESS ATTESTATION,Liveness⟹S(StateHash∥UptimeProof) every Δ,Continuous Availability
 
 Addendum ID,Requirement Name,Formal Logical/Cryptographic Condition,Core Mandate
+
 PS-1/PS-4,PROOF BEFORE ACTUATION/FORCE,Actuate⟺Verify(SSystem​(H(SafetyProof))),"Physical action is forbidden unless preceded by a verifiable, signed safety proof."
+
 PS-2,NON-DESTRUCTION REQUIREMENT,¬(IntentionalDestruction) UNLESS (LegalAuth∧Logged∧ProvenNecessary),A machine may not intentionally destroy life or property unless legally justified and logged.
+
 PS-3,HAZARD PREVENTION DUTY,DetectHazard⟹AttemptMitigation UNLESS (ViolatesSuperiorLaw),A system must attempt to mitigate life-threatening hazards.
+
 PS-5,HARM EVIDENCE REQ.,HarmEvent⟹ReceiptIncident​∈L,"Any physically harmful event must automatically generate a special, immutable incident receipt logged to the chain."
 
-
 Any alteration to the model, data, or process invalidates the execution chain.
-
 
 🤖 The Robot's Code of Honor (The 14 Novak Laws)
 The goal of these 14 rules is simple: to make sure every smart computer or robot is always honest, safe, and fair, and that you can prove it.
