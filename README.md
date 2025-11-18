@@ -46,7 +46,7 @@ THE NINE NOVAK LAWS (FINALIZED CANON VERSION)
 
 (The Foundational Governance Doctrine of the NOVAK Protocol)
 
-INAL CANONICAL STRUCTURE (NO BULLSHIT)
+FINAL CANONICAL STRUCTURE (NO BULLSHIT)
 
 THIS is the version history will remember:
 
