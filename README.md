@@ -46,69 +46,72 @@ THE NINE NOVAK LAWS (FINALIZED CANON VERSION)
 
 (The Foundational Governance Doctrine of the NOVAK Protocol)
 
+INAL CANONICAL STRUCTURE (NO BULLSHIT)
 
+THIS is the version history will remember:
 
-🟦 NOVAK LAW ZERO  - “No autonomous or computational decision system may cause harm to a human being, directly or indirectly, except where that harm is cryptographically proven to be lawful, necessary, and authorized under due process.”
+⭐ THE NOVAK LAWS OF EXECUTION INTEGRITY
 
-🟦 LAW 1 — VERIFIED INPUT ONLY
+(Canonical 2025 Codex)
 
-No system may execute a decision unless all input data is cryptographically attested, schema-valid, and provenance-verifiable.
-(Implemented by NIPS)
+NOVAK LAW ZERO — PRIMACY OF HUMAN SAFETY
 
-🟦 LAW 2 — IMMUTABLE EXECUTION RECEIPTS
+No autonomous or computational system may directly or indirectly harm a human being unless such harm is cryptographically proven to be lawful, necessary, and authorized under due process.
 
-Every execution MUST produce a non-erasable cryptographic receipt binding rule, input, output, actor identity, and timestamp.
-(Implemented by HARMONEE)
+LAW 1 — VERIFIED INPUT ONLY
 
-🟦 LAW 3 — GLOBAL AUDIT CONSISTENCY
+A system may not execute unless all inputs are cryptographically attested, schema-valid, and provenance-verifiable.
+(NIPS)
+
+LAW 2 — EXECUTION RECEIPT IMMUTABILITY
+
+Every execution MUST produce a cryptographic receipt binding:
+Rule + Input + Output + Actor + Time
+(HARMONEE)
+
+LAW 3 — GLOBAL AUDIT CONSISTENCY
 
 Execution receipts MUST chain into a recursive global hash such that ANY deletion or alteration produces detectable breakage.
-(Implemented by REVELATION)
+(REVELATION)
 
-🟦 LAW 4 — EQUAL EXECUTION REQUIREMENT
+LAW 4 — EQUAL EXECUTION REQUIREMENT
 
-Identical rule + input pairs MUST yield identical outputs — OR trigger a mandatory human-readable justification.
-(This is the Novak Deterministic Equality Mandate)
+Identical Rules + Identical Inputs MUST produce Identical Outputs — OR generate a mandatory human-readable justification.
+(NOVAK Deterministic Equality Mandate)
 
-🟦 LAW 5 — PUBLIC VERIFIABILITY
+LAW 5 — PUBLIC VERIFIABILITY
 
 Any third party MUST be able to independently validate execution integrity WITHOUT institutional trust.
 
-🟦 LAW 6 — CORRECTNESS BEFORE IMMUTABILITY
+LAW 6 — CORRECTNESS BEFORE IMMUTABILITY
 
-Systems MUST prove execution legality before writing results to ANY permanent record.
-(This flips blockchain’s model — legality first, ledger second)
+No system may write to any permanent ledger unless it has first proven the legality of its output.
 
-🟦 LAW 7 — FORBIDDEN SILENT OUTPUTS
+LAW 7 — FORBIDDEN SILENT OUTPUTS
 
-No determinations may be silently generated or cached.
-Any non-proven output MUST be blocked, not logged.
-
-NOVAK LAW 7.5 — MANDATORY SELF-REPORTING OF EXECUTION VIOLATIONS
-Any system operating under the NOVAK Model MUST automatically record and disclose any detected rule-violation, execution inequality, or corruption attempt. Suppression of such disclosure SHALL constitute a systemic integrity failure.
-
-NOVAK LAW 7.75  “No autonomous or computational system may report a state transition as successful unless the resulting external reality is independently verifiable as consistent with the declared outcome.”
-
-🟥 LAW 8 — THE NOVAK REDUNDANT AUTHORITY CLAUSE
-
-All NOVAK-compliant systems MUST maintain at least three independently addressable rule-integrity sources.
-Loss or divergence MUST trigger:
-❌ Execution halt
+No system may generate unproven or unlogged determinations.
+Detection of rule-violation MUST trigger:
+🟥 Execution halt
 ⚠ Integrity alarm
-🧾 Full forensic capture
+🧾 Automatic forensic logging
 
-NOVAK LAW 9 — REALITY CONSISTENCY
-A system may not declare an execution successful unless the resulting external world-state is independently verifiable as consistent with the declared outcome. If the reported effect and measured reality diverge, the system MUST enter violation state and produce a forensic record.
+(This merges 7, 7.5, 7.75 cleanly.)
 
+LAW 8 — THE NOVAK REDUNDANT AUTHORITY CLAUSE
 
-🟩 LAW 10 — THE NOVAK MACHINE ACCOUNTABILITY PRINCIPLE
+All NOVAK-compliant systems MUST maintain at least three independent integrity sources.
+Divergence = System must stop.
 
-Any automated system capable of affecting rights, resources, liberty, safety, or public record MUST operate under cryptographically enforceable legal authority, not discretionary trust.
+LAW 9 — REALITY CONSISTENCY
 
-This establishes:
+A system may not declare an execution valid unless the resulting external reality matches the claimed outcome.
 
-➡ Machines are subordinate to law, not supervisors of it.
-➡ AI must always be provably accountable to humans.
+(if system says “benefits approved” — money better be in the account.)
+
+LAW 10 — THE NOVAK MACHINE ACCOUNTABILITY PRINCIPLE
+
+Any system affecting rights, resources, liberty, safety, or public record MUST operate under cryptographically enforceable legal authority — NOT trust or discretion.
+
 
 THE NOVAK PHYSICAL SAFETY ADDENDUM (draft)
 LAW PS-1 — NO UNPROVEN ACTUATION
@@ -121,6 +124,10 @@ LAW PS-4 — PROOF BEFORE FORCE
  Any autonomous use of force (robot arm movement, chemical release, mechanical actuation) must be accompanied by a cryptographically verifiable safety proof — or the system must refuse execution.
 LAW PS-5 — EVIDENCE OF HARM
  All physically harmful outcomes must produce a cryptographically signed incident receipt, identical in structure to NOVAK HARMONEE evidence logs.
+
+THE NOVAK TEST
+
+“No output shall be considered lawful unless any competent third party can reproduce its legality proof without privileged access.”
 
 
 The First Cryptographically Enforced Execution-Integrity Model
