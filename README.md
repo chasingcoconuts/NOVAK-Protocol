@@ -192,9 +192,10 @@ This repository constitutes the authoritative public reference implementation.
 
 ## License
 
-✔ Free for U.S. Government use  
+✔ Free for U.S. Federal and State Government use  
 ✔ Free for academic use  
 ✔ Commercial use requires license  
+- **Foreign sovereign use prohibited without written approval**
 
 
 This system is now public for global cryptographic challenge.
@@ -205,6 +206,3 @@ submit a Challenge Issue.
 If you cannot break it, it stands.
 
 This is how we build honest government AI.
-
-
-
