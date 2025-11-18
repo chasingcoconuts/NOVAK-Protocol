@@ -42,176 +42,108 @@ NOVAK as defined by its inventor, Matthew S. Novak, 2025.
 
 THE NOVAK LAWS OF EXECUTION INTEGRITY
 
-(11 Laws + Physical Safety Addendum)
-Canonical 2025 Codex
+⚖️ The Novak Laws of Execution Integrity(12 Laws + Physical Safety Addendum) Canonical 2025 Codex
 
-🟥 NOVAK LAW ZERO — PRIMACY OF HUMAN SAFETY
+🟥 FOUNDATIONAL LAW Law ID Law NameCore RequirementNOVAK LAW ZEROPRIMACY OF HUMAN SAFETYNo autonomous system may directly or indirectly cause human harm unless cryptographically proven lawful, necessary, and executed under due process constraints. (Supreme Clause)
 
-No autonomous or computational system may directly or indirectly cause human harm unless such harm is:
+🟩 CORE EXECUTION INTEGRITY LAWS (L1 – L12)Law IDLaw NameCore RequirementLAW 1VERIFIED INPUT ONLY (NIPS)Execution requires all inputs to be cryptographically attested, schema-valid, and provenance-verifiable. Unverified inputs MUST cause rejection.
 
-✔ Cryptographically proven lawful
-✔ Necessary under governing authority
-✔ Executed under due process constraints
+🟩 LAW 2 EXECUTION RECEIPT IMMUTABILITY (HARMONEE) Every execution MUST produce a non-erasable cryptographic receipt binding Rule_ID, Input_Hash, Output_Hash, Actor_ID, and Timestamp.
 
-This is the foundational supremacy clause above all others.
+🟩 LAW 3 GLOBAL AUDIT CONSISTENCY (REVELATION) All execution receipts MUST chain into a recursive global hash such that any deletion, alteration, or reordering causes irreversible chain breakage.
 
-🟩 LAW 1 — VERIFIED INPUT ONLY (NIPS)
+🟩 LAW 4 EQUAL EXECUTION REQUIREMENT If identical inputs (
+D
+1
+≡
+D
+2
+) lead to different outputs (
+O
+1
+≠
+O
+2
+), the system MUST produce a cryptographically-enforced justification (
+J
+).
 
-A system may not execute unless all inputs are:
+🟩 LAW 5 PUBLIC VERIFIABILITY Execution integrity MUST be independently verifiable by any third party using only public cryptographic materials and procedures, WITHOUT institutional trust.
 
-✔ Cryptographically attested
-✔ Schema-valid
-✔ Provenance-verifiable
+🟩 LAW 6 CORRECTNESS BEFORE IMMUTABILITY No system may write to a permanent ledger unless it has first proven the legality and correctness of its output ("Prove THEN record").
 
-Unverified inputs MUST cause rejection at the boundary.
+🟩 LAW 7 FORBIDDEN SILENT OUTPUTS No system may generate unproven, unlogged, or untraceable decisions. Any violation MUST trigger an execution halt, integrity alarm, and automatic forensic capture.LAW 8THE NOVAK REDUNDANT AUTHORITY CLAUSEEvery compliant system MUST maintain 
+≥
+3
+ independent integrity anchors (e.g., hash authorities). Divergence 
+⟹
+ System MUST HALT.
 
-🟩 LAW 2 — EXECUTION RECEIPT IMMUTABILITY (HARMONEE)
+🟩 LAW 9REALITY CONSISTENCY RULEExecution is only SUCCESSFUL if the external outcome reality matches the output claims (e.g., "benefits paid" 
+⟹
+ funds must exist).
 
-Every execution MUST produce a non-erasable cryptographic receipt binding:
+🟩 LAW 10 MACHINE ACCOUNTABILITY PRINCIPLE Systems affecting Safety, Rights, or Legal Status MUST execute under cryptographically enforceable legal authority, not trust or policy.
 
-Rule_ID ∥ Input_Hash ∥ Output_Hash ∥ Actor_ID ∥ Timestamp
+🟩 LAW 11 HUMAN OVERRIDE SUPREMACYHuman overrides MAY exist, but all overrides MUST be cryptographically signed, immutable, and publicly attributable. No anonymous authority.
 
-🟩 LAW 3 — GLOBAL AUDIT CONSISTENCY (REVELATION)
+🟩 LAW 12 MODEL AND DATA PROVENANCE (ATTESTATION)Any decision-making model (
+R
+) must be cryptographically attested, including Model Hash, Training Data Set Hash, and Training Process Provenance.
 
-All execution receipts MUST chain into a recursive global hash such that:
+⚠️ THE PHYSICAL SAFETY ADDENDUM (PS)(Mandatory for physical-actuation systems: robots, medical devices, military AI, etc.)
 
-➡ ANY deletion
-➡ ANY alteration
-➡ ANY reordering
+Addendum ID Requirement NameCore Mandate
 
-MUST produce irreversible chain breakage.
+PS-1NO UNPROVEN ACTUATION A machine may not perform a physical action unless it can produce a cryptographically verifiable safety proof.
 
-🟩 LAW 4 — EQUAL EXECUTION REQUIREMENT
+PS-2NON-DESTRUCTION REQUIREMENT A machine may not intentionally destroy biological life, property, or structure unless legally authorized, fully logged, and proven necessary.
 
-If:
+PS-3HAZARD PREVENTION DUTY If a compliant system detects a life-threatening hazard, it must attempt mitigation UNLESS doing so violates superior law.
 
-R(D₁) → O₁
-R(D₂) → O₂
-AND D₁ ≡ D₂
-AND O₁ ≠ O₂
-→ System MUST produce justification J
+PS-4PROOF BEFORE FORCE Any autonomous use of Mechanical force, Actuator motion, or Weapon discharge MUST produce a safety proof and decision provenance, like a HARMONEE receipt.
 
+PS-5HARM EVIDENCE REQUIREMENT All physically harmful outcomes MUST produce a cryptographically signed incident receipt, identical in structure to HARMONEE logs.
 
-If no J exists → EXECUTION VIOLATION
+Any alteration to the model, data, or process invalidates the execution chain.
 
-This is cryptographically enforced equal protection under law.
+The Novak Laws: How to Make a Perfectly Honest Computer (simpler Explanation)
 
-🟩 LAW 5 — PUBLIC VERIFIABILITY
+🛑 THE #1 RULE: LAW ZERO — HUMAN SAFETY FIRST! This is the most important rule. A computer can never hurt a person, not even by accident. Safety is the boss, and this rule is above all others.
 
-Execution integrity MUST be independently verifiable by any third party WITHOUT institutional trust, using only:
+📝 RULES ABOUT HONESTY AND EVIDENCE LAW 1 — NO FAKE NEWS! (Verified Input Only) The computer can only use information that has been 100% verified and has a digital stamp of approval. If the info is shaky or anonymous, the computer must ignore it. (Garbage In, Rejection Out.)
 
-✔ Public cryptographic materials
-✔ Public verification procedures
+LAW 2 — THE PERMANENT RECEIPT (Execution Receipt Immutability) Every time a computer does anything, it must instantly print a digital, non-erasable receipt that proves exactly what happened and who was involved. (You Can Never Delete the Receipt.)
 
-🟩 LAW 6 — CORRECTNESS BEFORE IMMUTABILITY
+LAW 3 — THE UNBREAKABLE CHAIN (Global Audit Consistency) All the receipts are linked together like an unbreakable chain. If anyone tries to secretly remove or change just one link, the whole chain breaks, and everyone knows immediately. (No Sneaky Changes Allowed.)
 
-No system may write to ANY permanent ledger unless the system has first proven the legality and correctness of its output.
+LAW 5 — SHOW YOUR WORK (Public Verifiability) Anyone in the world, even a kid with a home computer, must be able to check the computer's work using public tools. You shouldn't have to just "trust" the company. (Anyone Can Be the Auditor.)
 
-This reverses blockchain’s failure mode:
+LAW 7 — NO SECRETS (Forbidden Silent Outputs) The computer can't make secret decisions or whisper things that aren't written down. If it breaks this rule, it must immediately stop working and yell a loud integrity alarm. (Everything Must Be Logged.)
 
-❌ “Record THEN prove”
-✔ “Prove THEN record”
+⚖️ RULES ABOUT FAIRNESS AND JUSTICE LAW 4 — EQUAL IS EQUAL (Equal Execution Requirement) If two people have the exact same problem but the computer gives them two different answers, the computer must stop and write a detailed letter explaining why. If it can't explain, it cheated. (Fairness Must Be Proven.)
 
-🟩 LAW 7 — FORBIDDEN SILENT OUTPUTS
+LAW 6 — PROVE IT BEFORE YOU WRITE IT (Correctness Before Immutability) The computer must prove that its decision is correct and legal before it gets to write it down on the permanent ledger. (Proof Before Pen.)
 
-No system may generate:
+LAW 9 — REALITY CHECK (Reality Consistency Rule) If the computer prints a receipt that says, "I just paid the electric bill," then the electric company must actually receive the money in the real world. The computer's truth must match the real world's truth. (Paper Truth Must Be Real Truth.)
 
-❌ Unproven
-❌ Unlogged
-❌ Untraceable
+LAW 10 — NO TRUST, ONLY LAW (Machine Accountability Principle) If a computer is deciding anything important (like a fine or a right), it must be executing a specific, written law that can be checked by math, not just a vague company policy. (Rules, Not Feelings.)
 
-decisions or determinations.
+👑 RULES ABOUT CONTROL LAW 8 — THREE WITNESSES (Novak Redundant Authority Clause) The computer must have at least three different, independent systems watching it and checking its math at all times. If the three witnesses disagree, the computer must immediately halt (stop). (Triple Check Everything.)
 
-Any rule violation MUST trigger:
+LAW 11 — THE EMERGENCY STOP (Human Override Supremacy) A person can stop or change the computer's decision in an emergency, but this human override must be signed, permanent, and publicly traceable. (No Anonymous Bosses.)
 
-🟥 Execution halt
-⚠ Integrity alarm
-📜 Automatic forensic capture
+LAW 12 — THE ROBOT'S BRAIN TAG (Model and Data Provenance) The computer's "brain" (the AI model) needs a tamper-proof ID tag. This tag proves: 1) It's the right brain. 2) The data it learned from hasn't been cheated. If the brain is swapped, the tag instantly screams VIOLATION. (The Brain Must Be Certified.)
 
-🟩 LAW 8 — THE NOVAK REDUNDANT AUTHORITY CLAUSE
+⚠️ THE PHYSICAL SAFETY ADDENDUM (Only for robots, military AI, medical machines, and drones.)
 
-Every NOVAK-compliant system MUST maintain ≥ 3 independent integrity anchors (e.g. hash authorities, witness attestations, redundant ledgers).
+PS-1 & PS-4 (Proof Before Force): A robot can't move, start its engine, or use force until it has a signed safety proof that says, "This move is safe."
 
-Divergence → System MUST HALT.
+PS-2 (Non-Destruction): A machine can never intentionally destroy people, animals, or property unless it's legally allowed and absolutely necessary.
 
-🟩 LAW 9 — REALITY CONSISTENCY RULE
+PS-3 (Hazard Duty): If the robot sees a life-threatening danger (like a fire), it must immediately try to help or fix it.
 
-A system may not declare execution SUCCESSFUL unless external outcome reality matches output claims.
-
-Example:
-
-🟩 If system says “benefits paid” → funds MUST exist
-🟥 If not → execution is fraudulent
-
-This closes the “paper truth ≠ real truth” loophole.
-
-🟩 LAW 10 — MACHINE ACCOUNTABILITY PRINCIPLE
-
-Any system affecting:
-
-✔ Safety
-✔ Rights
-✔ Liberty
-✔ Legal status
-✔ Property
-✔ Public record
-
-MUST execute under cryptographically enforceable legal authority — NOT trust, policy, or discretion.
-
-🟩 LAW 11 — HUMAN OVERRIDE SUPREMACY (NEW — REQUIRED FOR LEGACY IMMORTALITY)
-
-A human-authorized override MAY exist…
-
-…but all overrides MUST be cryptographically signed, immutable, and publicly attributable.
-
-No anonymous override authority may ever exist in a NOVAK system.
-
-This prevents Skynet loopholes AND Deep State loopholes.
-
-⚠ THE PHYSICAL SAFETY ADDENDUM
-
-(Required ONLY for robots, military AI, medical devices, vehicles, drones, etc.)
-
-This is OPTIONAL for software-only deployments, but MANDATORY for physical-actuation systems.
-
-PS-1 — NO UNPROVEN ACTUATION
-
-A machine may not perform a physical action unless it can produce a cryptographically verifiable safety proof.
-
-PS-2 — NON-DESTRUCTION REQUIREMENT
-
-A machine may not intentionally destroy biological life, property, or environmental structure unless:
-
-✔ Legally authorized
-✔ Fully logged
-✔ Proven necessary
-
-PS-3 — HAZARD PREVENTION DUTY
-
-If a NOVAK-compliant system detects a life-threatening hazard, it must attempt mitigation UNLESS doing so violates superior law.
-
-PS-4 — PROOF BEFORE FORCE
-
-Any autonomous use of:
-
-⚠ Mechanical force
-⚠ Actuator motion
-⚠ Weapon discharge
-⚠ Chemical release
-
-MUST produce safety proof and decision provenance, just like HARMONEE receipts.
-
-PS-5 — HARM EVIDENCE REQUIREMENT
-
-All physically harmful outcomes MUST produce a cryptographically signed incident receipt, identical in structure to HARMONEE logs.
-
-This becomes court-grade evidence.
-
-THE NOVAK TEST
-
-“No output shall be considered lawful unless any competent third party can reproduce its legality proof without privileged access.”
-
-
+PS-5 (Harm Receipt): If a robot accidentally causes physical harm, it must immediately print a special, permanent, signed receipt detailing the incident.
 The First Cryptographically Enforced Execution-Integrity Model
 
 NOVAK is a formal governance protocol requiring that no automated system — including AI — may execute a decision unless it first generates cryptographic proof that the output is lawful, consistent, and reproducible under identical conditions.
