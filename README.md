@@ -20,6 +20,28 @@ This repository contains:
 
 Novak Objective Verification of Autonomous Knowledge
 
+NOVAK — Novak Objective Verification of Autonomous Knowledge
+Created by: Matthew S. Novak
+First Published: 2025
+
+THE NOVAK ENFORCEMENT STACK:
+
+1️⃣ NIPS — Normalized Input Proof Set
+2️⃣ HARMONEE — Hash-Attested Regulatory Machine Output Notarized Execution Evidence
+3️⃣ REVELATION — Recursive Evidence Ledger for Attested Truth Integrity and Oversight Nonrepudiation
+4️⃣ Novak Equal Execution Law — Mandatory outcome equality under identical inputs
+
+THE FIVE NOVAK LAWS OF EXECUTION INTEGRITY
+
+LAW 1 — VERIFIED INPUT ONLY
+LAW 2 — IMMUTABLE EXECUTION RECEIPTS
+LAW 3 — GLOBAL AUDIT CONSISTENCY
+LAW 4 — EQUAL EXECUTION REQUIREMENT
+LAW 5 — PUBLIC VERIFIABILITY
+
+NO SYSTEM MAY EXECUTE WITHOUT PROVABLE TRUTH
+
+
 The First Cryptographically Enforced Execution-Integrity Model
 
 NOVAK is a formal governance protocol requiring that no automated system — including AI — may execute a decision unless it first generates cryptographic proof that the output is lawful, consistent, and reproducible under identical conditions.
