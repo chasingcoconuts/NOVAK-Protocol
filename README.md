@@ -37,6 +37,13 @@ NOVAK enforces the principle:
 | REVELATION | Recursive state audit chain |
 | Equal Execution Law | Mandatory justification if identical inputs diverge |
 
+O = f(R, D)
+P = H(R_H ∥ D_H ∥ O_H ∥ T)
+
+Execution Violation Condition:
+If D₁ ≡ D₂ and O₁ ≠ O₂ → Justification J REQUIRED
+
+
 ---
 
 ## 🏛 GOVERNMENT USE
@@ -135,9 +142,24 @@ NOVAK introduces enforceable execution integrity through four primitives:
 4. Identical inputs MUST produce identical outputs  
 5. Any citizen MUST be able to verify the truth independently
 
+LAW 1 — Verified Input Only (NIPS)
+LAW 2 — Immutable Execution Receipts (HARMONEE)
+LAW 3 — Global Recursive Audit Consistency (REVELATION)
+LAW 4 — Equal Execution Requirement
+LAW 5 — Public Verifiability Requirement
+
 **These laws are technically enforceable, not philosophical statements.**
 
+O = f(R, D)
+P = H(R_H ∥ D_H ∥ O_H ∥ T)
+
+Execution Violation Condition:
+If D₁ ≡ D₂ and O₁ ≠ O₂ → Justification J REQUIRED
+
 ---
+
+NOVAK — Novak Objective Verification of Autonomous Knowledge
+
 
 ## Why this matters
 
@@ -145,6 +167,13 @@ Every current government and AI governance model logs events _after_ they occur.
 
 NOVAK is the first framework that prevents unlawful or inconsistent executions
 from happening **at all**, unless proof of correctness exists **before runtime.**
+
+NOVAK is the first enforcement architecture that prevents automated systems — including AI — 
+from silently producing unlawful, unequal, or untraceable decisions.
+
+Unlike blockchain, NOVAK does not merely log violations.
+
+It prevents them.
 
 This is not blockchain.
 This is not policy.
