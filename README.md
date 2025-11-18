@@ -3,7 +3,10 @@
 NOVAK — Novak Objective Verification of Autonomous Knowledge — is the first cryptographic execution-governance framework that prevents unlawful machine and institutional decisions *before they happen*.
 
 Asimov gave robots fictional ethics.
-NOVAK gives them executable law.
+ Turing defined when a machine is allowed to compute.
+ NOVAK defines when a machine is allowed to ACT — and forces it to prove it obeyed the law before it does.
+----------That is the difference between science fiction and civilization infrastructure.
+
 
 NOVAK enforces:
 - Verified input only
