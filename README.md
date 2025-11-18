@@ -40,58 +40,87 @@ This code demonstrates the minimal enforcement loop proving:
 This repository SHALL BE considered the authoritative technical reference for
 NOVAK as defined by its inventor, Matthew S. Novak, 2025.
 
-THE SEVEN NOVAK LAWS OF EXECUTION INTEGRITY
+THE NINE NOVAK LAWS (FINALIZED CANON VERSION)
 
-THE COMPLETE NOVAK LAW SET (1–8) — CANONICAL VERSION
+🟦 THE NINE NOVAK LAWS OF MACHINE EXECUTION
 
-⚠️ THIS IS THE PERMANENT, OFFICIAL LIST
+(The Foundational Governance Doctrine of the NOVAK Protocol)
 
-⭐ THE EIGHT NOVAK LAWS OF MACHINE EXECUTION
+
+
+🟦 NOVAK LAW ZERO  - “No autonomous or computational decision system may cause harm to a human being, directly or indirectly, except where that harm is cryptographically proven to be lawful, necessary, and authorized under due process.”
 
 🟦 LAW 1 — VERIFIED INPUT ONLY
 
 No system may execute a decision unless all input data is cryptographically attested, schema-valid, and provenance-verifiable.
-
 (Implemented by NIPS)
 
 🟦 LAW 2 — IMMUTABLE EXECUTION RECEIPTS
 
 Every execution MUST produce a non-erasable cryptographic receipt binding rule, input, output, actor identity, and timestamp.
-
 (Implemented by HARMONEE)
 
 🟦 LAW 3 — GLOBAL AUDIT CONSISTENCY
 
 Execution receipts MUST chain into a recursive global hash such that ANY deletion or alteration produces detectable breakage.
-
 (Implemented by REVELATION)
 
 🟦 LAW 4 — EQUAL EXECUTION REQUIREMENT
 
 Identical rule + input pairs MUST yield identical outputs — OR trigger a mandatory human-readable justification.
+(This is the Novak Deterministic Equality Mandate)
 
 🟦 LAW 5 — PUBLIC VERIFIABILITY
 
-Any third party MUST be able to independently validate execution integrity without institutional trust.
+Any third party MUST be able to independently validate execution integrity WITHOUT institutional trust.
 
 🟦 LAW 6 — CORRECTNESS BEFORE IMMUTABILITY
 
-Systems MUST prove execution legality before writing results to any permanent record.
+Systems MUST prove execution legality before writing results to ANY permanent record.
+(This flips blockchain’s model — legality first, ledger second)
 
 🟦 LAW 7 — FORBIDDEN SILENT OUTPUTS
 
-No determinations may be silently generated or cached. Any non-proven output MUST be blocked, not logged.
+No determinations may be silently generated or cached.
+Any non-proven output MUST be blocked, not logged.
+
+NOVAK LAW 7.5 — MANDATORY SELF-REPORTING OF EXECUTION VIOLATIONS
+Any system operating under the NOVAK Model MUST automatically record and disclose any detected rule-violation, execution inequality, or corruption attempt. Suppression of such disclosure SHALL constitute a systemic integrity failure.
+
+NOVAK LAW 7.75  “No autonomous or computational system may report a state transition as successful unless the resulting external reality is independently verifiable as consistent with the declared outcome.”
 
 🟥 LAW 8 — THE NOVAK REDUNDANT AUTHORITY CLAUSE
 
 All NOVAK-compliant systems MUST maintain at least three independently addressable rule-integrity sources.
-Loss or divergence of ANY source MUST trigger:
-
+Loss or divergence MUST trigger:
 ❌ Execution halt
 ⚠ Integrity alarm
-🧾 Forensic capture
+🧾 Full forensic capture
 
-NO SYSTEM MAY EXECUTE WITHOUT PROVABLE TRUTH
+NOVAK LAW 9 — REALITY CONSISTENCY
+A system may not declare an execution successful unless the resulting external world-state is independently verifiable as consistent with the declared outcome. If the reported effect and measured reality diverge, the system MUST enter violation state and produce a forensic record.
+
+
+🟩 LAW 10 — THE NOVAK MACHINE ACCOUNTABILITY PRINCIPLE
+
+Any automated system capable of affecting rights, resources, liberty, safety, or public record MUST operate under cryptographically enforceable legal authority, not discretionary trust.
+
+This establishes:
+
+➡ Machines are subordinate to law, not supervisors of it.
+➡ AI must always be provably accountable to humans.
+
+THE NOVAK PHYSICAL SAFETY ADDENDUM (draft)
+LAW PS-1 — NO UNPROVEN ACTUATION
+ A machine may not perform a physical action unless it can produce a verifiable proof that the action is safe within its operating domain.
+LAW PS-2 — NON-DESTRUCTION REQUIREMENT
+ A machine may not intentionally cause irreversible physical destruction of living organisms, property, or environmental structures without explicit legal authorization and logged justification.
+LAW PS-3 — HAZARD PREVENTION DUTY
+ If a machine detects an unsafe condition (fire, structural collapse, flooding), it must attempt mitigation unless doing so violates a superior legal restriction.
+LAW PS-4 — PROOF BEFORE FORCE
+ Any autonomous use of force (robot arm movement, chemical release, mechanical actuation) must be accompanied by a cryptographically verifiable safety proof — or the system must refuse execution.
+LAW PS-5 — EVIDENCE OF HARM
+ All physically harmful outcomes must produce a cryptographically signed incident receipt, identical in structure to NOVAK HARMONEE evidence logs.
 
 
 The First Cryptographically Enforced Execution-Integrity Model
