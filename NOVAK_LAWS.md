@@ -40,4 +40,46 @@ PS-5HARM EVIDENCE REQUIREMENT All physically harmful outcomes MUST produce a cry
 
 Any alteration to the model, data, or process invalidates the execution chain.
 
-The Novak Laws: Simple Explanation (6th Grade Update)The goal of these 12 laws is to make sure robots and computers are always honest, safe, and fair.🛑 THE #1 RULE: LAW ZERO — HUMAN SAFETY FIRST!This is the supreme rule: A computer can never hurt a person, not even by accident. If a law or super-important rule is involved, it still has to follow strict, provable steps. (Safety is the Boss.)📝 RULES ABOUT HONESTY AND EVIDENCELAW 1 — NO FAKE NEWS! (Verified Input Only)The computer can only use information that is 100% verified and has a digital stamp of approval. If the info is shaky or anonymous, the computer must ignore it. (Garbage In, Rejection Out.)LAW 2 — THE PERMANENT RECEIPT (Execution Receipt Immutability)Every time a computer does anything—like sending an email or making a decision—it must instantly print a digital, non-erasable receipt that proves exactly what happened. (You Can Never Delete the Receipt.)LAW 3 — THE UNBREAKABLE CHAIN (Global Audit Consistency)All the receipts are chained together like an unbreakable tower of LEGOs. If anyone tries to secretly remove or change just one block, the whole tower crashes, and everyone knows immediately. (No Sneaky Changes Allowed.)LAW 5 — SHOW YOUR WORK (Public Verifiability)Anyone in the world, even a kid with a home computer, must be able to check the computer's work using public tools. You shouldn't have to just "trust" the company. (Anyone Can Be the Auditor.)LAW 7 — NO SECRETS (Forbidden Silent Outputs)The computer can't make secret decisions or whisper things that aren't written down in the receipt book. If it breaks this rule, it must immediately stop working and yell a loud integrity alarm. (Everything Must Be Logged.)⚖️ RULES ABOUT FAIRNESS AND JUSTICELAW 4 — EQUAL IS EQUAL (Equal Execution Requirement)If two people have the exact same problem but the computer gives them two different answers, the computer must stop and write a detailed letter explaining why. If it can't explain, it cheated. (Fairness Must Be Proven.)LAW 6 — PROVE IT BEFORE YOU WRITE IT (Correctness Before Immutability)The computer must prove that its decision is correct and legal before it gets to write it down on the permanent, unbreakable ledger. It can't just record things and check later. (Proof Before Pen.)LAW 9 — REALITY CHECK (Reality Consistency Rule)If the computer prints a receipt that says, "I just paid the electric bill," then the electric company must actually receive the money in the real world. If the paper truth doesn't match the real world, the execution is fraudulent. (Paper Truth Must Be Real Truth.)LAW 10 — NO TRUST, ONLY LAW (Machine Accountability Principle)If a computer is deciding anything important (like a fine or a right), it must be executing a specific, written law that can be checked by math, not just a vague company policy. (Rules, Not Feelings.)👑 RULES ABOUT CONTROLLAW 8 — THREE WITNESSES (Novak Redundant Authority Clause)The computer must have at least three different, independent systems watching it and checking its math at all times. If the three witnesses disagree, the computer must immediately halt (stop). (Triple Check Everything.)LAW 11 — THE EMERGENCY STOP (Human Override Supremacy)A person can stop or change the computer's decision in an emergency, but this human override must also be treated like a permanent receipt: it must be signed and publicly traceable. (No Anonymous Bosses.)LAW 12 — THE ROBOT'S BRAIN TAG (Model and Data Provenance)Every computer's "brain" (the AI model) needs a tamper-proof ID tag. This tag proves: 1) It's the right brain. 2) The training data (what it learned from) hasn't been cheated. 3) The way it was taught was clean. If the brain is swapped, the ID tag instantly screams VIOLATION. (The Brain Must Be Certified.)⚠️ THE PHYSICAL SAFETY ADDENDUM(Only for robots, military AI, medical machines, and drones.)These rules make sure the robot can't move until it proves it's safe and logs any harm it causes.PS-1 & PS-4 (Proof Before Force): A robot can't move, start its engine, or fire anything until it has a signed safety proof that says, "This move is safe."PS-2 (Non-Destruction): A machine can never intentionally destroy people, animals, or property unless legally allowed and absolutely necessary.PS-3 (Hazard Duty): If the robot sees a danger (like a fire), it must try to help or fix it right away.PS-5 (Harm Receipt): If a robot causes any physical harm, it must immediately print a special, permanent, signed receipt detailing the incident.
+
+The Novak Laws: How to Make a Perfectly Honest Computer (simpler Explanation)
+
+🛑 THE #1 RULE: LAW ZERO — HUMAN SAFETY FIRST!
+This is the most important rule. A computer can never hurt a person, not even by accident. Safety is the boss, and this rule is above all others.
+
+📝 RULES ABOUT HONESTY AND EVIDENCE
+LAW 1 — NO FAKE NEWS! (Verified Input Only) The computer can only use information that has been 100% verified and has a digital stamp of approval. If the info is shaky or anonymous, the computer must ignore it. (Garbage In, Rejection Out.)
+
+LAW 2 — THE PERMANENT RECEIPT (Execution Receipt Immutability) Every time a computer does anything, it must instantly print a digital, non-erasable receipt that proves exactly what happened and who was involved. (You Can Never Delete the Receipt.)
+
+LAW 3 — THE UNBREAKABLE CHAIN (Global Audit Consistency) All the receipts are linked together like an unbreakable chain. If anyone tries to secretly remove or change just one link, the whole chain breaks, and everyone knows immediately. (No Sneaky Changes Allowed.)
+
+LAW 5 — SHOW YOUR WORK (Public Verifiability) Anyone in the world, even a kid with a home computer, must be able to check the computer's work using public tools. You shouldn't have to just "trust" the company. (Anyone Can Be the Auditor.)
+
+LAW 7 — NO SECRETS (Forbidden Silent Outputs) The computer can't make secret decisions or whisper things that aren't written down. If it breaks this rule, it must immediately stop working and yell a loud integrity alarm. (Everything Must Be Logged.)
+
+⚖️ RULES ABOUT FAIRNESS AND JUSTICE
+LAW 4 — EQUAL IS EQUAL (Equal Execution Requirement) If two people have the exact same problem but the computer gives them two different answers, the computer must stop and write a detailed letter explaining why. If it can't explain, it cheated. (Fairness Must Be Proven.)
+
+LAW 6 — PROVE IT BEFORE YOU WRITE IT (Correctness Before Immutability) The computer must prove that its decision is correct and legal before it gets to write it down on the permanent ledger. (Proof Before Pen.)
+
+LAW 9 — REALITY CHECK (Reality Consistency Rule) If the computer prints a receipt that says, "I just paid the electric bill," then the electric company must actually receive the money in the real world. The computer's truth must match the real world's truth. (Paper Truth Must Be Real Truth.)
+
+LAW 10 — NO TRUST, ONLY LAW (Machine Accountability Principle) If a computer is deciding anything important (like a fine or a right), it must be executing a specific, written law that can be checked by math, not just a vague company policy. (Rules, Not Feelings.)
+
+👑 RULES ABOUT CONTROL
+LAW 8 — THREE WITNESSES (Novak Redundant Authority Clause) The computer must have at least three different, independent systems watching it and checking its math at all times. If the three witnesses disagree, the computer must immediately halt (stop). (Triple Check Everything.)
+
+LAW 11 — THE EMERGENCY STOP (Human Override Supremacy) A person can stop or change the computer's decision in an emergency, but this human override must be signed, permanent, and publicly traceable. (No Anonymous Bosses.)
+
+LAW 12 — THE ROBOT'S BRAIN TAG (Model and Data Provenance) The computer's "brain" (the AI model) needs a tamper-proof ID tag. This tag proves: 1) It's the right brain. 2) The data it learned from hasn't been cheated. If the brain is swapped, the tag instantly screams VIOLATION. (The Brain Must Be Certified.)
+
+⚠️ THE PHYSICAL SAFETY ADDENDUM
+(Only for robots, military AI, medical machines, and drones.)
+
+PS-1 & PS-4 (Proof Before Force): A robot can't move, start its engine, or use force until it has a signed safety proof that says, "This move is safe."
+
+PS-2 (Non-Destruction): A machine can never intentionally destroy people, animals, or property unless it's legally allowed and absolutely necessary.
+
+PS-3 (Hazard Duty): If the robot sees a life-threatening danger (like a fire), it must immediately try to help or fix it.
+
+PS-5 (Harm Receipt): If a robot accidentally causes physical harm, it must immediately print a special, permanent, signed receipt detailing the incident.
