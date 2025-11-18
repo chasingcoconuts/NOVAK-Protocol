@@ -208,52 +208,6 @@ Together, these form:
 
 ---
 
-## 🟣 WHY THIS MATTERS
-
-🔹 Blockchain logs bad decisions — NOVAK prevents them  
-🔹 AI safety frameworks monitor — NOVAK enforces  
-🔹 Court oversight is reactive — NOVAK is pre-emptive  
-🔹 Humans can lie — math cannot
-
-If NOVAK is deployed even once inside a federal claims system, tax engine, procurement logic, or autonomous weapon, it becomes:
-
-📜 A new constitutional enforcement layer  
-⚖ The basis of machine-verifiable due process  
-🏛 A permanent historical milestone
-
-
----
-
-## 🏛 GOVERNMENT USE
-
-NOVAK is **free for government and public-interest use** under the
-NOVAK-Public license.
-
-This ensures:
-
-✔ The public can always verify government automated decisions  
-✔ NOVAK remains the authoritative enforcement doctrine  
-✔ No private company may lock down institutional truth
-
----
-
-## 💰 COMMERCIAL USE
-
-Private sector deployments require a commercial NOVAK license.
-
-Contact: ***mnovak.none@gmail.com***
-
----
-
-## 📜 CITATION
-
-> Novak, M. (2025). **The NOVAK Protocol — A Cryptographically Enforced Execution Integrity Framework.**
-
-DOI: *pending*
-
----
-
-## 🧠 WHY THIS MATTERS
 
 NOVAK is the first system that:
 
@@ -261,18 +215,7 @@ NOVAK is the first system that:
 ✔ Proves execution legality without needing trust  
 ✔ Makes AI and government computable, provable, and challengeable
 
----
 
-## 🧪 TEST DRIVERS
-
-`tests/` contains full validation harnesses for all components.
-
-Run:
-
-pytest tests/
-
-
----
 
 ## 🫡 PUBLIC CHALLENGE
 
