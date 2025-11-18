@@ -1,5 +1,9 @@
 # NOVAK PROTOCOL
 
+NOVAK is a deterministic execution integrity model.
+It enforces that no automated system may produce an output unless it can first generate a cryptographic proof that the result is lawful, reproducible, and rule-consistent.
+If identical inputs do not produce identical outputs, NOVAK forces justification or blocks execution.
+
 NOVAK — Novak Objective Verification of Autonomous Knowledge — is the first cryptographic execution-governance framework that prevents unlawful machine and institutional decisions *before they happen*.
 
 Asimov gave robots fictional ethics.
