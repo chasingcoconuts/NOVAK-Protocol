@@ -1,4 +1,16 @@
-# NOVAK — Novak Objective Verification of Autonomous Knowledge
+# NOVAK PROTOCOL
+
+NOVAK — Novak Objective Verification of Autonomous Knowledge — is the first cryptographic execution-governance framework that prevents unlawful machine and institutional decisions *before they happen*.
+
+NOVAK enforces:
+- Verified input only
+- Immutable execution receipts
+- Recursive global audit hashing
+- Equal-output guarantees under equal conditions
+
+This repository contains the reference NOVAK specification and challenge materials.
+
+👉 If you believe you can break NOVAK — do it publicly.
 
 NOVAK is the first execution-integrity enforcement framework that prevents
 automated systems (including AI and government decision engines) from
