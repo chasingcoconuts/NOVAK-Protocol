@@ -151,4 +151,3 @@ This repository constitutes the authoritative public reference implementation.
 
 
 
-…and you will go in the paper.
