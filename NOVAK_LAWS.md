@@ -1,5 +1,8 @@
+
 Law ID,Law Name,Formal Logical/Cryptographic Condition,Primary Function
-LAW ZERO,PRIMACY OF HUMAN SAFETY,¬(Harm) UNLESS (SAuthority​(Lawful)∧DueProcess),Ethical/Legal Constraint
+
+🛑 LAW ZERO,PRIMACY OF HUMAN SAFETY,¬(Harm) UNLESS (SAuthority​(Lawful)∧DueProcess),Ethical/Legal Constraint
+
 LAW 1,VERIFIED INPUT ONLY (NIPS),Execute⟺(SchemaValid(D)∧Verify(SSource​(H(D)))),Data Integrity
 LAW 2,EXECUTION RECEIPT IMMUTABILITY (HARMONEE),$\text{Receipt} = H(R_{\text{ID}} \| H(D) \| H(O) \| \text{Actor}_{\text{ID}} \| \text{Timesta$,Atomic Accountability
 LAW 3,GLOBAL AUDIT CONSISTENCY (REVELATION),∀n:Ln​=H(Ln−1​∥Receiptn​,Historical Integrity
@@ -14,6 +17,7 @@ LAW 11,HUMAN OVERRIDE SUPREMACY,Override⟹Logged(SHuman​(OverrideAction)),Fin
 LAW 12,MODEL AND DATA PROVENANCE,Execute⟺Verify(SDev​(ModelHash∥DataHash∥ProcHash,AI Model Integrity
 LAW 13,DYNAMIC REDUNDANCY LIMIT,If (Latency>Tmax​)∧(¬HarmRisk)⟹TempSet(N=2)∧Log(Risk),High-Speed Liveness
 LAW 14,PROOF-OF-LIVENESS ATTESTATION,Liveness⟹S(StateHash∥UptimeProof) every Δ,Continuous Availability
+
 Addendum ID,Requirement Name,Formal Logical/Cryptographic Condition,Core Mandate
 PS-1/PS-4,PROOF BEFORE ACTUATION/FORCE,Actuate⟺Verify(SSystem​(H(SafetyProof))),"Physical action is forbidden unless preceded by a verifiable, signed safety proof."
 PS-2,NON-DESTRUCTION REQUIREMENT,¬(IntentionalDestruction) UNLESS (LegalAuth∧Logged∧ProvenNecessary),A machine may not intentionally destroy life or property unless legally justified and logged.
