@@ -197,4 +197,14 @@ This repository constitutes the authoritative public reference implementation.
 ✔ Commercial use requires license  
 
 
+This system is now public for global cryptographic challenge.
+
+If you can break it, prove inconsistency, or demonstrate a bypass,
+submit a Challenge Issue.
+
+If you cannot break it, it stands.
+
+This is how we build honest government AI.
+
+
 
