@@ -7,6 +7,8 @@ Asimov gave robots fictional ethics.
  NOVAK defines when a machine is allowed to ACT — and forces it to prove it obeyed the law before it does.
 ----------That is the difference between science fiction and civilization infrastructure.
 
+THIS IS THE OFFICIAL AUTHORITATIVE SOURCE FOR ALL NOVAK PROTOCOL MATERIALS — ALL GOVERNMENT, ACADEMIC AND COMMERCIAL IMPLEMENTATIONS MUST TRACE BACK TO THIS REPOSITORY.
+
 “NOVAK is the first enforcement architecture in human history that prevents a government or AI system from producing an unlawful decision without being caught — instantly, mathematically, and publicly.”
 
 Novak Objective Verification of Autonomous Knowledge
