@@ -104,7 +104,7 @@ deterministically reproducible under identical conditions.
 
 NOVAK introduces enforceable execution integrity through four primitives:
 
-1. **NIPS** – Normalized Input Proof Set  
+1. **NIPS** – Novak Input Proof Set  
    Ensures no unverifiable input may ever trigger an execution event.
 
 2. **HARMONEE** – Hash-Attested Regulatory Machine Execution Evidence  
