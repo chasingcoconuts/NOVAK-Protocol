@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>NOVAK Protocol Demo</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #111; color: #eee; }
+    h1 { color: #6cf; }
+    textarea, input { width: 100%; padding: 10px; margin: 5px 0; background:#222; color:#eee; border:1px solid #444;}
+    button { padding: 10px 20px; background:#0af; border:none; color:#000; font-weight:bold; cursor:pointer; }
+    .box { background:#181818; padding:15px; border:1px solid #333; margin-top:20px;}
+  </style>
+</head>
+<body>
+
+<h1>NOVAK Protocol – Browser Demo</h1>
+<p>This demo shows: NIPS → HARMONEE → REVELATION → Equal Execution Check.</p>
+
+<h3>Input Data (D)</h3>
+<textarea id="inputData" rows="4" placeholder="Enter JSON...">{ "veteranRating": 80, "effectiveDate": "2024-01-01" }</textarea>
+
+<h3>Rule (R)</h3>
+<textarea id="ruleData" rows="4" placeholder="Enter Rule Logic...">
+{
+  "ruleId": "VA-CALC-01",
+  "description": "Benefit = Rating × 2"
+}
+</textarea>
+
+<button onclick="runNovak()">Run NOVAK</button>
+
+<div class="box">
+  <h3>NIPS — Input Attestation</h3>
+  <pre id="nipsOut"></pre>
+</div>
+
+<div class="box">
+  <h3>HARMONEE — Execution Receipt</h3>
+  <pre id="harmOut"></pre>
+</div>
+
+<div class="box">
+  <h3>REVELATION — Global Chain</h3>
+  <pre id="revOut"></pre>
+</div>
+
+<div class="box">
+  <h3>Equal Execution Check</h3>
+  <pre id="equalOut"></pre>
+</div>
+
+<script>
+// Simple SHA-256 helper
+async function sha256(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hash = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+let revelationChain = [];
+
+async function runNovak() {
+  const D = JSON.parse(document.getElementById("inputData").value);
+  const R = JSON.parse(document.getElementById("ruleData").value);
+
+  // === NIPS — Attestation ===
+  const D_H = await sha256(JSON.stringify(D));
+  const R_H = await sha256(JSON.stringify(R));
+
+  const NIPS = {
+    schemaValid: true,
+    provenance: "self-demo",
+    D_H,
+    R_H,
+    timestamp: Date.now()
+  };
+
+  document.getElementById("nipsOut").textContent = JSON.stringify(NIPS, null, 2);
+
+  // === Execute rule ===
+  const O = { 
+    benefit: D.veteranRating * 2,
+    timestamp: Date.now()
+  };
+  const O_H = await sha256(JSON.stringify(O));
+
+  // === HARMONEE Receipt ===
+  const H = await sha256(R_H + D_H + O_H + NIPS.timestamp);
+
+  const receipt = {
+    H,
+    R_H, D_H, O_H,
+    executedAt: new Date().toISOString()
+  };
+  document.getElementById("harmOut").textContent = JSON.stringify(receipt, null, 2);
+
+  // === REVELATION Chain Append ===
+  const prev = revelationChain.length ? revelationChain[revelationChain.length-1].chainHash : "GENESIS";
+  const chainHash = await sha256(prev + H);
+
+  revelationChain.push({
+    index: revelationChain.length,
+    chainHash,
+    receipt
+  });
+
+  document.getElementById("revOut").textContent = JSON.stringify(revelationChain, null, 2);
+
+  // === Equal Execution Check ===
+  let equalCheck = "No prior identical input to compare.";
+
+  for (let entry of revelationChain.slice(0, -1)) {
+    if (entry.receipt.D_H === D_H) {
+      if (entry.receipt.O_H !== O_H) {
+        equalCheck = "⚠ VIOLATION — same input, different output!";
+      } else {
+        equalCheck = "✓ PASSES — identical output for identical input.";
+      }
+    }
+  }
+
+  document.getElementById("equalOut").textContent = equalCheck;
+}
+</script>
+
+</body>
+</html>
