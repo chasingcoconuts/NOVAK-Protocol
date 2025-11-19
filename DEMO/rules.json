@@ -1,0 +1,19 @@
+{
+  "rule_id": "VA_CLAIM_RULE_001",
+  "description": "If disability_rating >= 50 then eligible_for_benefits = true else false.",
+  "logic": {
+    "if": {
+      "field": "disability_rating",
+      "operator": ">=",
+      "value": 50
+    },
+    "then": {
+      "eligible_for_benefits": true
+    },
+    "else": {
+      "eligible_for_benefits": false
+    }
+  },
+  "version": "1.0",
+  "authority": "NOVAK Protocol — Deterministic Regulatory Execution Rule"
+}
