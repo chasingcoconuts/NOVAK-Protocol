@@ -1,0 +1,11 @@
+{
+  "input_id": "INPUT_0001",
+  "attested_by": "VA_SYSTEM_LOCAL_ATTESTER",
+  "signature_valid": true,
+  "schema_valid": true,
+  "provenance": "VA_PRIMARY_SOURCE_DB",
+  "data": {
+    "veteran_id": "123456789",
+    "disability_rating": 70
+  }
+}
