@@ -358,3 +358,7 @@ submit a Challenge Issue.
 If you cannot break it, it stands.
 
 This is how we build honest government AI.
+
+also: https://www.robertsspaceindustries.com/enlist?referral=STAR-KRN7-SJTX
+
+donations if you think this is something useful and helps: chasingcoconuts@icloud.com 
