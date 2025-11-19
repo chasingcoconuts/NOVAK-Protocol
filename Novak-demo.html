@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Hash Loop Demo</title>
+<style>
+  body { font-family: monospace; background:#111; color:#0f0; padding:20px; }
+  pre { background:#000; padding:10px; border-radius:6px; }
+</style>
+</head>
+<body>
+<h2>NOVAK Continuous Hash Loop</h2>
+<p>This demo continually hashes input → output → receipt just like HARMONEE + REVELATION.</p>
+
+<pre id="output">Initializing…</pre>
+
+<script>
+// Simple SHA-256 function using WebCrypto API
+async function sha256(str) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2,"0")).join("");
+}
+
+// NOVAK loop variables
+let prevChain = "GENESIS_BLOCK"; // start chain
+
+async function loop() {
+  const timestamp = new Date().toISOString();
+  const rule = "RULE_ID=VA_2025.CLAIM_CHECK";
+  const input = "INPUT=Verified_Test_Data";
+  const output = "OUTPUT=Approved";
+
+  // HARMONEE receipt (rule + input + output + timestamp)
+  const receipt = await sha256(rule + input + output + timestamp);
+
+  // REVELATION global chain
+  const chain = await sha256(prevChain + receipt);
+
+  // Display
+  document.getElementById("output").textContent =
+`NOVAK HASH LOOP
+------------------------------
+Timestamp:    ${timestamp}
+HARMONEE:     ${receipt}
+REVELATION:   ${chain}
+Previous:     ${prevChain}
+
+This simulates deterministic enforcement.
+
+(1) NIPS = verified input
+(2) HARMONEE = execution receipt
+(3) REVELATION = audit chain
+(4) NOVAK = deterministic governance layer
+`;
+
+  // Update for next cycle
+  prevChain = chain;
+
+  // Loop forever
+  setTimeout(loop, 1000);
+}
+
+loop();
+</script>
+</body>
+</html>
