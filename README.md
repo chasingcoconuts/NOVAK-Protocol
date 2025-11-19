@@ -321,36 +321,33 @@ This repository constitutes the authoritative public reference implementation.
 
 ---
 
-The NOVAK Protocol may be used at no cost by:
-
-U.S. Federal Government agencies
-
-Government accountability offices
-
-Public oversight bodies
-
-Research and academic institutions
-
-Use for regulatory integrity, public transparency, or safety-critical oversight is explicitly permitted and encouraged.
-
-2. COMMERCIAL USE REQUIRES LICENSE
-
-Commercial companies, vendors, or entities using NOVAK for any revenue-generating activity MUST obtain a commercial license from:
-
-Matthew S. Novak
-Creator and Author of the NOVAK Protocol
-
-Contact: mnovak.none@gmail.com
-
-LICENSES REQUIRED for corporate + foreign government use
-
 SECTOR LICENSE:
 State & Local Gov: $1 per resident served
 Commercial SaaS: $0.001 per execution
 Banking/Insurance: $0.01 per validated decision
 Foreign Gov: Negotiated sovereign contract
 AI Model Vendors: OEM embedding license
-This system is now public for global cryptographic challenge.
+
+No commercial resale, SaaS offering, or embedding in proprietary systems is allowed without explicit written permission.
+
+3. PROHIBITIONS
+3.1 NO GPL / NO COPYLEFT
+
+The NOVAK Protocol may NOT be:
+
+Licensed
+
+Distributed
+
+Combined
+
+Linked
+
+Embedded
+
+Forked
+
+under GPL, AGPL, LGPL, or any other copyleft or viral license.
 
 If you can break it, prove inconsistency, or demonstrate a bypass,
 submit a Challenge Issue.
