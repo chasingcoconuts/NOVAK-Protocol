@@ -2,57 +2,74 @@ import hashlib
 import json
 import time
 
-# ------------------------
-# Helper: SHA-256 hash
-# ------------------------
+# -----------------------------------------
+# SHA-256 helper (normalized representation)
+# -----------------------------------------
 def _h(value):
-    return hashlib.sha256(json.dumps(value, sort_keys=True).encode()).hexdigest()
+    """Hash any Python object deterministically."""
+    if isinstance(value, (dict, list)):
+        value = json.dumps(value, sort_keys=True).encode()
+    elif isinstance(value, str):
+        value = value.encode()
+    else:
+        value = str(value).encode()
+    return hashlib.sha256(value).hexdigest()
 
-# ------------------------
+# -----------------------------------------
+# NOVAK GENESIS HASH
+# -----------------------------------------
+GENESIS_HASH = _h("NOVAK-GENESIS")
+
+# -----------------------------------------
 # NIPS: Input Verification
-# ------------------------
+# -----------------------------------------
 def verify_nips(inputs, schema):
-    # 1. schema must match
+    # Check required fields exist
     for field in schema:
         if field not in inputs:
             return False
     
-    # 2. placeholder "signature/provenance" check
-    # In real systems, you verify cryptographic signatures here.
+    # Check attestation flag
     if not inputs.get("attested", False):
         return False
 
     return True
 
-# ------------------------
+# -----------------------------------------
 # HARMONEE: Execution Receipt
-# ------------------------
+# -----------------------------------------
 def harmonee_receipt(rule, inputs, output):
-    return _h({
+    receipt_obj = {
         "rule_id": rule["id"],
         "input_hash": _h(inputs),
         "output_hash": _h(output),
         "actor": "NOVAK_KERNEL",
         "timestamp": int(time.time())
-    })
+    }
+    return _h(receipt_obj), receipt_obj
 
-# ------------------------
-# REVELATION: Global Chain
-# ------------------------
-def revelation_chain(previous_hash, receipt_hash):
-    return _h(previous_hash + receipt_hash)
+# -----------------------------------------
+# REVELATION: Global recursive hash chain
+# -----------------------------------------
+def revelation_chain(previous_hash, receipt_obj):
+    chain_obj = {
+        "prev_hash": previous_hash,
+        "receipt": receipt_obj
+    }
+    return _h(chain_obj)
 
-# ------------------------
-# NOVAK Equal Execution Law
-# ------------------------
+# -----------------------------------------
+# Equal Execution Law (EEL)
+# -----------------------------------------
 def equal_execution_check(rule, inputs, output, reference_table):
-    key = _h({"rule": rule, "inputs": inputs})
+    key = _h({"rule": rule["id"], "inputs": inputs})
+
     if key in reference_table:
-        prior_output = reference_table[key]
-        if prior_output != output:
+        expected = reference_table[key]
+        if expected != output:
             return {
                 "violation": True,
-                "expected": prior_output,
+                "expected": expected,
                 "actual": output,
                 "justification_required": True
             }
@@ -61,33 +78,76 @@ def equal_execution_check(rule, inputs, output, reference_table):
 
     return {"violation": False}
 
-# ------------------------
-# DETERMINISTIC EXECUTION KERNEL (NOVAK)
-# ------------------------
-def novak_execute(rule, inputs, schema, reference_table, prev_chain_hash):
-    # 1. NIPS enforcement
+# -----------------------------------------
+# NOVAK EXECUTION KERNEL
+# -----------------------------------------
+def novak_execute(rule, inputs, schema, reference_table, prev_chain_hash=GENESIS_HASH):
+
+    # 1. NIPS — Verified inputs only
     if not verify_nips(inputs, schema):
-        raise ValueError("NIPS Violation: Inputs are not attested or schema-valid.")
-    
-    # 2. Deterministic rule application
+        raise ValueError("NIPS Violation: Inputs invalid or not attested.")
+
+    # 2. Deterministic rule logic
     cond = rule["logic"]["if"]
-    if inputs["disability_rating"] >= cond["value"]:
+    if inputs[cond["field"]] >= cond["value"]:
         output = rule["logic"]["then"]
     else:
         output = rule["logic"]["else"]
 
-    # 3. HARMONEE execution receipt
-    receipt = harmonee_receipt(rule, inputs, output)
+    # 3. HARMONEE receipt
+    receipt_hash, receipt_obj = harmonee_receipt(rule, inputs, output)
 
-    # 4. REVELATION recursive audit hash
-    chain_hash = revelation_chain(prev_chain_hash, receipt)
+    # 4. REVELATION global chain
+    chain_hash = revelation_chain(prev_chain_hash, receipt_obj)
 
-    # 5. Equal Execution Principle
-    eq = equal_execution_check(rule, inputs, output, reference_table)
+    # 5. Equal Execution Law
+    eq_check = equal_execution_check(rule, inputs, output, reference_table)
 
     return {
         "output": output,
-        "receipt": receipt,
+        "receipt_hash": receipt_hash,
+        "receipt_obj": receipt_obj,
         "chain_hash": chain_hash,
-        "equal_execution": eq
+        "equal_execution": eq_check
     }
+
+# -----------------------------------------
+# SIMPLE TEST EXECUTION (DEMO)
+# -----------------------------------------
+
+if __name__ == "__main__":
+
+    # Example rule
+    rule = {
+        "id": "RULE-V1",
+        "logic": {
+            "if": {"field": "score", "value": 70},
+            "then": {"approved": True, "level": "A"},
+            "else": {"approved": False, "level": "F"}
+        }
+    }
+
+    # Example schema required fields
+    schema = ["score", "attested"]
+
+    # Example inputs (valid)
+    inputs = {
+        "score": 85,
+        "attested": True
+    }
+
+    # Equal execution reference table
+    reference_table = {}
+
+    # Execute NOVAK
+    result = novak_execute(
+        rule=rule,
+        inputs=inputs,
+        schema=schema,
+        reference_table=reference_table
+    )
+
+    # Pretty print the result
+    print("\n=== NOVAK EXECUTION RESULT ===")
+    print(json.dumps(result, indent=4))
+
