@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Architectural Synthesis: Integrity Microservice</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.4rem; margin: 0 0 5px 0; color: #00ff73; }
+  .sub-title { color: #aaa; font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* OVERALL STYLES */
+  .flow-container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding-top: 40px;
+  }
+
+  /* INTEGRITY LINE */
+  .integrity-line {
+    position: absolute;
+    top: 0;
+    left: 5%;
+    right: 5%;
+    height: 3px;
+    background: linear-gradient(90deg, #333 0%, #00ff73 50%, #333 100%);
+    z-index: 1;
+  }
+  .integrity-line::before {
+    content: "INTEGRITY FLOW";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #00ff73;
+    font-size: 0.75rem;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
+
+  /* FLOW NODES */
+  .node {
+    flex-basis: 22%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    background: #0a0a0d;
+    position: relative;
+    z-index: 2;
+  }
+
+  .node::before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 20px;
+    background: #181820;
+    border: 3px solid #00ff73;
+    border-radius: 50%;
+  }
+
+  .node strong { display: block; font-size: 1rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  /* SPECIFIC COLORS */
+  .nips-box { border-color: #ffcc00; }
+  .novak-box { border-color: #ff6600; }
+  .harmonee-box { border-color: #0099ff; }
+  .revelation-box { border-color: #00ff73; }
+  
+  .nips-box::before { border-color: #ffcc00; }
+  .novak-box::before { border-color: #ff6600; }
+  .harmonee-box::before { border-color: #0099ff; }
+  .revelation-box::before { border-color: #00ff73; }
+
+  /* CONNECTORS */
+  .connector {
+    width: 20px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -15px;
+    font-size: 1.5rem;
+    color: #00ff73;
+    font-weight: bold;
+    z-index: 2;
+  }
+  .connector-container {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      margin-top: 10px;
+  }
+  .arrow-down {
+      color: #999;
+      font-size: 1.2rem;
+      margin: 10px 0;
+  }
+
+  /* THE INFRASTRUCTURE BAR */
+  .infrastructure {
+      width: 90%;
+      background: #000;
+      border: 3px dashed #333;
+      padding: 20px;
+      margin-top: 30px;
+      border-radius: 12px;
+      text-align: center;
+  }
+  .infra-text {
+      color: #777;
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 2px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h2>The NOVAK Execution Chain</h2>
+  <div class="sub-title">NOVAK as a Verifiable Microservice Integrity Layer</div>
+
+  <div class="flow-container">
+    <div class="integrity-line"></div>
+    
+    <div class="node nips-box">
+      <strong>1. NIPS (Input)</strong>
+      <span>The **Verified Data Packet** from the existing system.</span>
+      <span style="color:#ffcc00;">*Data is authenticated and frozen.*</span>
+      <div class="arrow-down">↓</div>
+      <span style="font-size:0.65rem; color:#ffcc00;">Data Layer</span>
+    </div>
+
+    <div class="node novak-box">
+      <strong>2. NOVAK (Rule)</strong>
+      <span>The **Governance Rule** that dictates the decision.</span>
+      <span style="color:#ff6600;">*Logic is defined and immutable.*</span>
+      <div class="arrow-down">↓</div>
+      <span style="font-size:0.65rem; color:#ff6600;">Logic Layer</span>
+    </div>
+
+    <div class="node harmonee-box">
+      <strong>3. HARMONEE (Receipt)</strong>
+      <span>The SHA-256 hash of the **Execution Proof** (NIPS + NOVAK + Time).</span>
+      <span style="color:#0099ff;">*Proof of Execution is generated.*</span>
+      <div class="arrow-down">↓</div>
+      <span style="font-size:0.65rem; color:#0099ff;">Proof Layer</span>
+    </div>
+
+    <div class="node revelation-box">
+      <strong>4. REVELATION (Chain)</strong>
+      <span>The SHA-256 hash of (Previous Revelation + HARMONEE).</span>
+      <span style="color:#00ff73;">*History is linked and locked forever.*</span>
+      <div class="arrow-down">↓</div>
+      <span style="font-size:0.65rem; color:#00ff73;">Audit Layer</span>
+    </div>
+
+  </div>
+
+  <div class="infrastructure">
+    <div class="infra-text">
+        NOVAK IS **ALGORITHM-AGNOSTIC** AND **INFRASTRUCTURE-AGNOSTIC**
+    </div>
+    <div style="font-size:0.8rem; color:#555; margin-top:10px;">
+        (This layer can be running on AWS, Azure, SQL Server, Kafka, or any legacy system.)
+    </div>
+  </div>
+
+  <div style="width: 90%; margin-top: 30px; text-align: center; color: #ddd; font-size: 0.9rem;">
+    NOVAK provides a cryptographic guarantee that **the rule was followed exactly as defined** on **the data as verified**, creating an unbreakable **REVELATION** log that sits entirely independent of the underlying database.
+  </div>
+
+</div>
+
+</body>
+</html>
