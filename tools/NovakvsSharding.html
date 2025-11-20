@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Sharding/Distributed Database Architecture</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SHARDING STYLES (Gold) */
+  .shard-title { color: #ffca28; }
+  .shard-box { border-color: #ffca28; box-shadow: 0 0 15px rgba(255, 202, 40, 0.1); }
+  .shard-bg { background: rgba(255, 202, 40, 0.05); }
+  .shard-arrow { color: #ffca28; }
+  .shard-detail { color: #ffe082; }
+
+  /* NOVAK STYLES (Bright Pink) */
+  .novak-title { color: #ec407a; }
+  .novak-box { border-color: #ec407a; box-shadow: 0 0 15px rgba(236, 64, 122, 0.1); }
+  .novak-bg { background: rgba(236, 64, 122, 0.05); }
+  .novak-arrow { color: #ec407a; }
+  .novak-detail { color: #f48fb1; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-gold { background: rgba(255, 202, 40, 0.15); border: 1px solid #ffca28; color: #ffca28; }
+  .core-pink { background: rgba(236, 64, 122, 0.15); border: 1px solid #ec407a; color: #ec407a; }
+  
+  /* SHARDING SPECIFIC */
+  .shard-detail-box {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="shard-title">Sharding / Distributed DB</h2>
+    <div class="sub-title">System of Scale and Availability</div>
+
+    <div class="node shard-box shard-bg">
+      <strong>MASSIVE TRANSACTION VOLUME</strong>
+      <span>High frequency of read/write operations (e.g., social media, e-commerce).</span>
+    </div>
+    <div class="arrow shard-arrow">↓</div>
+
+    <div class="node shard-box">
+      <strong>DATA PARTITIONING</strong>
+      <span>Data is split horizontally and sent to different servers (shards).</span>
+      <div class="shard-detail-box">
+        <span class="shard-detail">Shard 1: Users A-F</span>
+        <span class="shard-detail">Shard 2: Users G-M</span>
+        <span class="shard-detail">Shard 3: Users N-Z</span>
+      </div>
+    </div>
+    <div class="arrow shard-arrow">↓</div>
+
+    <div class="node shard-box shard-bg">
+      <strong>HIGH-THROUGHPUT SYSTEM</strong>
+      <span>Faster processing by reducing the workload on any single server.</span>
+      <span>Proves: The system can handle billions of transactions efficiently.</span>
+    </div>
+    <div class="arrow shard-arrow">↓</div>
+
+    <div class="core-diff core-gold">
+      <strong>PRIMARY GOAL: LATENCY & VOLUME</strong>
+      <span>To maximize the number of operations per second (scalability) and minimize user wait time.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Algorithm-Agnostic Accountability Structure</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>THE PROCESS (NIPS + NOVAK)</strong>
+      <span>Rule + Data + Previous Hash + Time.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>HARMONEE / REVELATION CALCULATION</strong>
+      <span>A single, fixed cryptographic calculation is run on the execution data.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail" style="font-weight:bold;">HASH (PROCESS)</span>
+        <span style="font-size:0.75rem;">(The entire process takes fractions of a second)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash is the immutable chain link.</span>
+      <span>Proves: The data has integrity, regardless of how fast or distributed the underlying database is.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-pink">
+      <strong>CORE STRENGTH: INDEPENDENT INTEGRITY</strong>
+      <span>NOVAK is the immutable audit layer that can run *on top of* Sharded/Distributed systems, providing trust without sacrificing scale.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
