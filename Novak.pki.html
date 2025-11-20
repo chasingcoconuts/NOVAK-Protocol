@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Digital Signature (PKI) Architecture</title>
+<style>
+  body { 
+    background: #14141c; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #1e1e26;
+    border: 1px solid #3a3a45;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e26;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #bbb;
+    z-index: 2;
+    border: 1px solid #555;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #3a3a45;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #888; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* PKI STYLES (Red/Maroon) */
+  .pki-title { color: #ff5252; }
+  .pki-box { border-color: #ff5252; box-shadow: 0 0 15px rgba(255, 82, 82, 0.1); }
+  .pki-bg { background: rgba(255, 82, 82, 0.05); }
+  .pki-arrow { color: #ff5252; }
+
+  /* NOVAK STYLES (Light Green) */
+  .novak-title { color: #ccff00; }
+  .novak-box { border-color: #ccff00; box-shadow: 0 0 15px rgba(204, 255, 0, 0.1); }
+  .novak-bg { background: rgba(204, 255, 0, 0.05); }
+  .novak-arrow { color: #ccff00; }
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #111116;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-red { background: rgba(255, 82, 82, 0.15); border: 1px solid #ff5252; color: #ff5252; }
+  .core-green { background: rgba(204, 255, 0, 0.15); border: 1px solid #ccff00; color: #ccff00; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="pki-title">Traditional Digital Signature (PKI)</h2>
+    <div class="sub-title">Non-Repudiation of Content</div>
+
+    <div class="node pki-box pki-bg">
+      <strong>DOCUMENT (DATA)</strong>
+      <span>A fixed file or document (e.g., PDF contract, software update).</span>
+    </div>
+    <div class="arrow pki-arrow">↓</div>
+
+    <div class="node pki-box">
+      <strong>HASHING & SIGNING</strong>
+      <span>1. Document is HASHED (SHA-256).</span>
+      <span>2. Hash is ENCRYPTED with Private Key.</span>
+    </div>
+    <div class="arrow pki-arrow">↓</div>
+
+    <div class="node pki-box pki-bg">
+      <strong>THE SIGNATURE</strong>
+      <span>A standalone cryptographic file/string.</span>
+      <span>Proves: The content was *not* altered *after* the signature was applied.</span>
+    </div>
+    <div class="arrow pki-arrow">↓</div>
+
+    <div class="core-diff core-red">
+      <strong>CORE LIMITATION: SILENT PROCESS</strong>
+      <span>Does not prove *how* the document was created, or that the signing party followed the correct rules to create it.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Verifiable Execution and Chaining</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>THE PROCESS (NIPS + NOVAK)</strong>
+      <span>Rule + Data + Previous State Hash + Time.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>CHAINING & HASHING (HARMONEE)</strong>
+      <span>1. All inputs are HASHED together (SHA-256).</span>
+      <span>2. Result is chained to the REVELATION History.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>THE REVELATION HASH</strong>
+      <span>An immutable link in the chain of command.</span>
+      <span>Proves: The correct rule was *applied* to the correct data, and the chain was not broken.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-green">
+      <strong>CORE STRENGTH: VERIFIABLE EXECUTION</strong>
+      <span>The integrity mechanism (the hash) is applied to the *entire process*, locking the logic into the chain forever.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
