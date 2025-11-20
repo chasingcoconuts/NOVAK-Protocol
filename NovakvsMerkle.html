@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Merkle Tree Auditing</title>
+<style>
+  body { 
+    background: #14141c; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #1e1e26;
+    border: 1px solid #3a3a45;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e26;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #bbb;
+    z-index: 2;
+    border: 1px solid #555;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #3a3a45;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #888; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* MERKLE STYLES (Yellow) */
+  .merkle-title { color: #ffeb3b; }
+  .merkle-box { border-color: #ffeb3b; box-shadow: 0 0 15px rgba(255, 235, 59, 0.1); }
+  .merkle-bg { background: rgba(255, 235, 59, 0.05); }
+  .merkle-arrow { color: #ffeb3b; }
+
+  /* NOVAK STYLES (Teal) */
+  .novak-title { color: #00ffc8; }
+  .novak-box { border-color: #00ffc8; box-shadow: 0 0 15px rgba(0, 255, 200, 0.1); }
+  .novak-bg { background: rgba(0, 255, 200, 0.05); }
+  .novak-arrow { color: #00ffc8; }
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #111116;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-yellow { background: rgba(255, 200, 0, 0.15); border: 1px solid #ffeb3b; color: #ffeb3b; }
+  .core-teal { background: rgba(0, 255, 150, 0.15); border: 1px solid #00ffc8; color: #00ffc8; }
+  
+  /* MERKLE SPECIFIC */
+  .merkle-tree {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+  }
+  .merkle-tree pre { margin: 0; }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="merkle-title">Centralized Merkle Auditing</h2>
+    <div class="sub-title">Periodic Log Proof (e.g., Certificate Transparency)</div>
+
+    <div class="node merkle-box merkle-bg">
+      <strong>RECORD BATCH</strong>
+      <span>Thousands of events are logged in a database.</span>
+    </div>
+    <div class="arrow merkle-arrow">↓</div>
+
+    <div class="node merkle-box">
+      <strong>MERKLE TREE ROOT CALCULATION</strong>
+      <span>All log entries are hashed, then pairs are hashed up the tree.</span>
+      <div class="merkle-tree">
+        <pre>(Log1+Log2) → HashA</pre>
+        <pre>(Log3+Log4) → HashB</pre>
+        <pre>(HashA+HashB) → ROOT</pre>
+      </div>
+    </div>
+    <div class="arrow merkle-arrow">↓</div>
+
+    <div class="node merkle-box merkle-bg">
+      <strong>ROOT SIGNATURE</strong>
+      <span>The single "Root Hash" is publicly signed/published.</span>
+      <span>Proves data *wasn't* changed since the last audit.</span>
+    </div>
+    <div class="arrow merkle-arrow">↓</div>
+
+    <div class="core-diff core-yellow">
+      <strong>CORE FLAW: TRUST IN AUDITOR + TIME</strong>
+      <span>Data is vulnerable to tampering *between* audit periods. The central authority must be trusted.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Deterministic Governance Layer (Continuous Proof)</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>SINGLE EXECUTION (NIPS + NOVAK)</strong>
+      <span>One Data point + One Rule + Current Timestamp</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>REVELATION CHAINING</strong>
+      <span>SHA-256 links the previous state to the current execution.</span>
+      <div style="margin-top:10px;">
+        <span style="color:#00ffc8; font-size:0.8rem; font-weight:bold;">PREV_HASH + HARMONEE → REVELATION</span>
+        <span style="font-size:0.75rem;">(The proof of execution is the chain link)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash is the public signature, immediately.</span>
+      <span>Proves data *is* correct the moment it's generated.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-teal">
+      <strong>CORE STRENGTH: TRUST IN CONTINUOUS MATH</strong>
+      <span>Every single event is instantly chained. No batching. Integrity is continuous and instantaneous.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
