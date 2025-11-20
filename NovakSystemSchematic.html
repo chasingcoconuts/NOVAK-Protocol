@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Protocol: System Schematic</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1200px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #4CAF50; /* Green */
+  }
+
+  h2 { 
+    color: #ffd700; /* Gold */
+    font-size: 1.2rem; 
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .system-container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+    position: relative;
+  }
+
+  /* SYSTEM BLOCKS */
+  .system-block {
+    flex-basis: 30%;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    position: relative;
+  }
+  
+  .s-enterprise { background: #3a1a1a; color: #ff6347; border: 3px solid #ff6347; }
+  .s-novak { background: #1a2a3a; color: #87ceeb; border: 3px solid #87ceeb; }
+  .s-verification { background: #1a3a1a; color: #32cd32; border: 3px solid #32cd32; }
+
+  .block-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  /* CORE COMPONENTS INSIDE NOVAK BLOCK */
+  .novak-components {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #b2ebf2;
+    line-height: 1.8;
+  }
+  .novak-components strong { color: #ffd700; margin-right: 5px; }
+
+  /* ARROWS AND FLOW LINES */
+  .flow-line {
+    position: absolute;
+    height: 4px;
+    background: #444;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .flow-1-2 { left: 30%; width: 20%; background: linear-gradient(to right, #ff6347, #87ceeb); }
+  .flow-2-3 { left: 50%; width: 20%; background: linear-gradient(to right, #87ceeb, #32cd32); }
+
+  .arrowhead {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    z-index: 2;
+  }
+
+  .arrow-1-2 { 
+    border-left: 15px solid #87ceeb; 
+    left: calc(30% + 20% - 15px); 
+    top: 50%; 
+    transform: translateY(-50%);
+  }
+  .arrow-2-3 { 
+    border-left: 15px solid #32cd32; 
+    left: calc(50% + 20% - 15px); 
+    top: 50%; 
+    transform: translateY(-50%);
+  }
+  
+  .flow-label {
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #181820;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: normal;
+  }
+
+  /* BOTTOM CHAIN LINKAGE */
+  .chain-linkage {
+    margin-top: 40px;
+    width: 90%;
+    padding: 20px;
+    border: 2px dashed #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #ffd700;
+    font-weight: bold;
+  }
+  .chain-linkage strong {
+      color: #32cd32;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>The NOVAK System Schematic</h1>
+  <h2>Bridging Enterprise Decisions to Mathematical Proof</h2>
+
+  <div class="system-container">
+    
+    <div class="system-block s-enterprise" style="margin-right: 180px;">
+      <div class="block-title">1. Existing Enterprise System</div>
+      <p style="font-size: 0.9rem; font-weight: normal; color: #ff9800;">(Microservice, AI Model, Database)</p>
+      <p style="font-size: 0.85rem; font-weight: normal;">
+        Execution of business logic (e.g., credit decision, trade execution).
+      </p>
+      <div class="novak-components">
+        **Output:** <span style="color:#ff6347;">NIPS (Data Payload)</span>
+      </div>
+    </div>
+    
+    <div class="system-block s-novak" style="position: absolute; left: 35%; top: 0; width: 30%;">
+      <div class="block-title">2. NOVAK Protocol Engine</div>
+      <p style="font-size: 0.9rem; font-weight: normal; color: #87ceeb;">(Local API/Sidecar Service)</p>
+      <p style="font-size: 0.85rem; font-weight: normal;">
+        Cryptographic attestation of the decision.
+      </p>
+      <div class="novak-components">
+        <strong style="color:#32cd32;">Process:</strong> <span style="color:#b2ebf2;">HARMONEE Receipt Generation</span><br>
+        <strong style="color:#ffd700;">Output:</strong> <span style="color:#b2ebf2;">REVELATION Chain Link</span>
+      </div>
+    </div>
+    
+    <div class="system-block s-verification" style="margin-left: 180px;">
+      <div class="block-title">3. Audit & Verification Layer</div>
+      <p style="font-size: 0.9rem; font-weight: normal; color: #32cd32;">(External Auditor, Client, Regulator)</p>
+      <p style="font-size: 0.85rem; font-weight: normal;">
+        Mathematical verification of the historical record.
+      </p>
+      <div class="novak-components">
+        **Input:** <span style="color:#ffd700;">REVELATION History</span><br>
+        **Result:** <span style="color:#32cd32;">Mathematical Proof of Integrity</span>
+      </div>
+    </div>
+    
+    <div class="flow-line flow-1-2" style="left: 200px; width: 250px;"></div>
+    <div class="arrowhead arrow-1-2" style="left: 450px;"></div>
+    <span class="flow-label" style="left: 325px; color:#87ceeb;">Rule & Data Processing</span>
+
+    <div class="flow-line flow-2-3" style="left: 650px; width: 250px; background: #87ceeb;"></div>
+    <div class="arrowhead arrow-2-3" style="left: 900px; border-left-color: #32cd32;"></div>
+    <span class="flow-label" style="left: 775px; color:#32cd32;">History for Verification</span>
+
+
+  </div>
+
+  <div class="chain-linkage">
+    The **REVELATION Hash** from Block 2 is stored alongside the Enterprise's traditional data, and is fed back into Block 2 for the **next transaction's chain link**, creating the self-verifying loop.
+    <br><br>
+    The result: The Audit Gap is permanently closed by **Cryptographic Certainty**.
+  </div>
+
+</div>
+
+</body>
+</html>
