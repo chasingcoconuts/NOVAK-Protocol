@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Use Case: Voting Machine</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 3px solid #00bcd4; /* Cyan Border */
+    width: 1100px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(0, 188, 212, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #ffd700; /* Gold */
+  }
+
+  h2 { 
+    color: #4CAF50; /* Green */
+    font-size: 1.2rem; 
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+
+  .scenario-box {
+    width: 90%;
+    background: #0a0a0d;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    border: 1px solid #303038;
+  }
+  .scenario-box strong { color: #00bcd4; }
+
+  .flow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+  }
+
+  .flow-step {
+    flex-basis: 30%;
+    background: #252530;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  }
+  .flow-step h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .flow-step p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ccc;
+  }
+  .flow-step strong {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  /* Specific Step Styling */
+  .step-1 { border: 3px solid #ff6347; }
+  .step-1 h3 { color: #ff6347; }
+  .step-1 strong { color: #ffd700; }
+
+  .step-2 { border: 3px solid #87ceeb; }
+  .step-2 h3 { color: #87ceeb; }
+  .step-2 strong { color: #32cd32; }
+
+  .step-3 { border: 3px solid #32cd32; }
+  .step-3 h3 { color: #32cd32; }
+  .step-3 strong { color: #ffd700; }
+
+  .arrow {
+    font-size: 3rem;
+    color: #87ceeb;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  .conclusion-box {
+    margin-top: 40px;
+    padding: 20px;
+    width: 95%;
+    border: 3px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>NOVAK Use Case: Secure Voting Machine</h1>
+  <h2>Ensuring Election Integrity with Cryptographic Certainty</h2>
+
+  <div class="scenario-box">
+    <strong>Scenario:</strong> A voter casts a ballot on an electronic voting machine. NOVAK must cryptographically prove that the machine recorded the vote accurately and according to the rules, creating an immutable, verifiable record for every single vote.
+  </div>
+
+  <div class="flow-container">
+    
+    <div class="flow-step step-1">
+      <h3>1. Capture NIPS Data</h3>
+      <p>
+        <strong>What is captured?</strong><br>
+        - Voter ID (anonymized hash)<br>
+        - Candidate Selection (encrypted)<br>
+        - Ballot ID<br>
+        - Machine ID<br>
+        - Timestamp
+      </p>
+      <p>This is the raw, verifiable input/output of the transaction.</p>
+    </div>
+    
+    <div class="arrow">→</div>
+
+    <div class="flow-step step-2">
+      <h3>2. Generate HARMONEE Receipt</h3>
+      <p>
+        <strong>Inputs to HARMONEE:</strong><br>
+        - NOVAK Rule (e.g., "VA_ELECTION_2024.VOTE_RECORDING")<br>
+        - The captured NIPS Data<br>
+        - Current Timestamp
+      </p>
+      <p>A unique cryptographic receipt is generated, proving this vote's integrity.</p>
+    </div>
+    
+    <div class="arrow">→</div>
+
+    <div class="flow-step step-3">
+      <h3>3. Update REVELATION Chain</h3>
+      <p>
+        <strong>Inputs to REVELATION:</strong><br>
+        - Previous REVELATION Hash (from last vote)<br>
+        - Current HARMONEE Receipt
+      </p>
+      <p>The new REVELATION hash is created, permanently linking this vote to all prior votes in an unbreakable chain.</p>
+    </div>
+    
+  </div>
+
+  <div class="conclusion-box">
+    **Result:** Every single vote has an **immutable, cryptographically verifiable proof**. Any attempt to alter a vote or the machine's log will instantly break the **REVELATION Chain**, making tampering mathematically impossible to conceal.
+  </div>
+
+</div>
+
+</body>
+</html>
