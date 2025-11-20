@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Post-Quantum Crypto (PQC) Architecture</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* PQC STYLES (Light Blue) */
+  .pqc-title { color: #64b5f6; }
+  .pqc-box { border-color: #64b5f6; box-shadow: 0 0 15px rgba(100, 181, 246, 0.1); }
+  .pqc-bg { background: rgba(100, 181, 246, 0.05); }
+  .pqc-arrow { color: #64b5f6; }
+  .pqc-detail { color: #81d4fa; }
+
+  /* NOVAK STYLES (Purple) */
+  .novak-title { color: #c67dff; }
+  .novak-box { border-color: #c67dff; box-shadow: 0 0 15px rgba(198, 125, 255, 0.1); }
+  .novak-bg { background: rgba(198, 125, 255, 0.05); }
+  .novak-arrow { color: #c67dff; }
+  .novak-detail { color: #e1bee7; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-blue { background: rgba(100, 181, 246, 0.15); border: 1px solid #64b5f6; color: #64b5f6; }
+  .core-purple { background: rgba(198, 125, 255, 0.15); border: 1px solid #c67dff; color: #c67dff; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="pqc-title">Post-Quantum Cryptography (PQC)</h2>
+    <div class="sub-title">Future-Proofing the Algorithm</div>
+
+    <div class="node pqc-box pqc-bg">
+      <strong>INPUT DATA</strong>
+      <span>Any data requiring secure hashing or encryption (e.g., a file, a transaction).</span>
+    </div>
+    <div class="arrow pqc-arrow">↓</div>
+
+    <div class="node pqc-box">
+      <strong>PQC HASH FUNCTION</strong>
+      <span>**Replaces SHA-256** with a quantum-resistant math model.</span>
+      <div style="margin-top:10px;">
+        <span class="pqc-detail" style="font-weight:bold;">E.g., SHA-256 → CRYSTALS-KYBER</span>
+        <span style="font-size:0.75rem;">(Uses complex mathematical structures like lattices)</span>
+      </div>
+    </div>
+    <div class="arrow pqc-arrow">↓</div>
+
+    <div class="node pqc-box pqc-bg">
+      <strong>PQC HASH STRING</strong>
+      <span>A longer, more complex output hash.</span>
+      <span>Proves: The data has not been altered, and the proof cannot be broken by a quantum computer.</span>
+    </div>
+    <div class="arrow pqc-arrow">↓</div>
+
+    <div class="core-diff core-blue">
+      <strong>PRIMARY GOAL: ALGORITHMIC STRENGTH</strong>
+      <span>To maintain computational security against future threats (quantum computers).</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Algorithm-Agnostic Accountability Structure</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>THE PROCESS (NIPS + NOVAK + HASH)</strong>
+      <span>Rule + Data + Previous State Hash + Timestamp.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>THE CHAINING MECHANISM</strong>
+      <span>The *process* of hashing the previous hash is the constant architecture.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail" style="font-weight:bold;">Algorithm is INTERCHANGEABLE</span>
+        <span style="font-size:0.75rem;">(It works with SHA-256 today, or PQC tomorrow)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash (whatever its format) is the immutable chain link.</span>
+      <span>Proves: The entire execution process remains mathematically linked to all prior history.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-purple">
+      <strong>PRIMARY GOAL: ARCHITECTURAL INTEGRITY</strong>
+      <span>To ensure every execution links into a perpetual chain of accountability, regardless of the underlying algorithm.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
