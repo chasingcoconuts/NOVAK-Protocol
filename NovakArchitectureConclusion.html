@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The NOVAK Value Proposition: Closing the Audit Gap</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  h2 { 
+    text-align: center; 
+    text-transform: uppercase; 
+    letter-spacing: 4px; 
+    font-size: 2.2rem; 
+    margin: 0 0 15px 0; 
+    color: #ffd700; /* Gold */
+  }
+  .sub-title { 
+    text-align: center; 
+    color: #777; 
+    font-size: 1rem; 
+    margin-bottom: 50px; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+  }
+
+  .section-container {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    gap: 40px;
+  }
+
+  .section {
+    flex-basis: 45%;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+  }
+
+  /* LEFT: THE PROBLEM */
+  .problem {
+    background: #2a1a1a;
+    border: 3px solid #ff6347; /* Red */
+  }
+  .problem-title {
+    color: #ff6347;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .problem-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #ff6347;
+  }
+  .problem-text {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+  .focus-box {
+    margin-top: 20px;
+    padding: 10px;
+    background: #4a2a2a;
+    border: 1px dashed #ff6347;
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: #ffcdd2;
+  }
+
+  /* RIGHT: THE SOLUTION */
+  .solution {
+    background: #1a2a1a;
+    border: 3px solid #32cd32; /* Green */
+  }
+  .solution-title {
+    color: #32cd32;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .solution-icon {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #32cd32;
+  }
+  .solution-text {
+    font-size: 0.9rem;
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  /* CENTER BRIDGE */
+  .bridge-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 4rem;
+    color: #ffd700;
+    z-index: 10;
+    pointer-events: none;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  .bridge-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    background: #181820;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: #ffd700;
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1rem;
+    white-space: nowrap;
+    z-index: 11;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h2>The Fundamental Value Proposition</h2>
+  <div class="sub-title">Closing the Enterprise Governance and Audit Gap</div>
+
+  <div class="section-container">
+
+    <div class="section problem">
+      <div class="problem-icon">❌</div>
+      <div class="problem-title">The Audit Gap</div>
+      <div class="problem-text">
+        **Current systems provide NO mathematical proof** that the governance rules were followed. All trust relies on:
+        <ul>
+          <li>Human integrity (Auditor, Admin, Employee)</li>
+          <li>System permissions (Mutable logs)</li>
+          <li>Retrospective sampling (Too late, incomplete)</li>
+        </ul>
+        This creates a **GAP** between the data and the verifiable compliance record.
+      </div>
+      <div class="focus-box">
+        CORE RISK: **Governance Failure** (Internal or External Tampering)
+      </div>
+    </div>
+
+    <div class="bridge-arrow">→</div>
+    <div class="bridge-text">NOVAK PROTOCOL</div>
+
+
+    <div class="section solution">
+      <div class="solution-icon">✅</div>
+      <div class="solution-title">The NOVAK Bridge</div>
+      <div class="solution-text">
+        **NOVAK provides the missing cryptographic link** that binds the data (NIPS) to the rule (NOVAK) into a perpetual, verifiable history (REVELATION).
+        <ul>
+          <li>Trust is based on **SHA-256 math** (Trustless)</li>
+          <li>Record is **immutable** (Tamper-proof)</li>
+          <li>Verification is **continuous** (100% coverage)</li>
+        </ul>
+        This mathematically **BRIDGES** the data to the compliance record.
+      </div>
+      <div class="focus-box" style="background: #2a4a2a; border-color: #32cd32; color: #e0ffe0; margin-top: 20px;">
+        CORE VALUE: **Mathematical Governance** (Continuous, Self-Proving Integrity)
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
