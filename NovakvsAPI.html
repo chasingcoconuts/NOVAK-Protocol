@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK API Integration Flow</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 { 
+    text-align: center; 
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
+    font-size: 1.4rem; 
+    margin: 0 0 10px 0; 
+    color: #ffd700; /* Gold */
+  }
+  .sub-title { 
+    text-align: center; 
+    color: #777; 
+    font-size: 0.9rem; 
+    margin-bottom: 30px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+
+  .flow-container {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .step {
+    display: flex;
+    align-items: center;
+    background: #1e1e26;
+    border: 1px solid #3a3a45;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: relative;
+  }
+
+  .step-number {
+    background: #ffd700; /* Gold */
+    color: #101015;
+    width: 30px;
+    height: 30px;
+    min-width: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-right: 15px;
+  }
+
+  .step-content {
+    flex-grow: 1;
+  }
+
+  .step-title {
+    font-weight: bold;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 3px;
+  }
+
+  .step-detail {
+    font-size: 0.8rem;
+    color: #aaa;
+  }
+
+  /* Specific color coding for NOVAK components */
+  .nips-color { color: #ff6347; } /* Tomato Red */
+  .novak-color { color: #87ceeb; } /* Sky Blue */
+  .harmonee-color { color: #32cd32; } /* Lime Green */
+
+  /* ARROW STYLES */
+  .arrow-down {
+    text-align: center;
+    font-size: 2rem;
+    color: #444;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+
+  /* CODE CALLOUT */
+  .code-callout {
+    background: #0a0a0d;
+    border-left: 3px solid #ffd700;
+    padding: 10px 15px;
+    margin-top: 10px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.75rem;
+    color: #ffd700;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h2>The NOVAK Execution Flow: API Integration</h2>
+  <div class="sub-title">How an existing Microservice attaches the Integrity Layer</div>
+
+  <div class="flow-container">
+
+    <div class="step">
+      <div class="step-number">1</div>
+      <div class="step-content">
+        <div class="step-title">Microservice Execution</div>
+        <div class="step-detail">The enterprise application (e.g., a credit scoring service) runs its business logic as normal.</div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <div class="step" style="border-color: #ff6347;">
+      <div class="step-number" style="background: #ff6347;">2</div>
+      <div class="step-content">
+        <div class="step-title nips-color">Gather NIPS Data (Input + Output)</div>
+        <div class="step-detail">The service collects all **verifiable inputs** (data, user ID, previous state) and **verifiable outputs** (the decision result).</div>
+        <div class="code-callout">
+          NIPS_PAYLOAD = { rule_id: "VA_2025.LOAN_APPROVAL", input: {...}, output: "DENY" }
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <div class="step" style="border-color: #87ceeb;">
+      <div class="step-number" style="background: #87ceeb;">3</div>
+      <div class="step-content">
+        <div class="step-title novak-color">Call NOVAK Protocol API</div>
+        <div class="step-detail">The service makes a single, non-blocking call to the locally deployed NOVAK engine, passing the NIPS data and the **Previous REVELATION Hash**.</div>
+        <div class="code-callout">
+          POST /v1/novak/attest &rarr; (NIPS_PAYLOAD, PREV_CHAIN_HASH)
+        </div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <div class="step" style="border-color: #32cd32;">
+      <div class="step-number" style="background: #32cd32;">4</div>
+      <div class="step-content">
+        <div class="step-title harmonee-color">HARMONEE Receipt & REVELATION Chain</div>
+        <div class="step-detail">The NOVAK engine cryptographically hashes the input (creating **HARMONEE**) and links it to the global chain (creating the new **REVELATION** hash).</div>
+      </div>
+    </div>
+    <div class="arrow-down">↓</div>
+
+    <div class="step">
+      <div class="step-number">5</div>
+      <div class="step-content">
+        <div class="step-title">Store & Proceed</div>
+        <div class="step-detail">The service receives the **REVELATION Hash** and saves it alongside its traditional database record, completing the verifiable transaction.</div>
+        <div class="code-callout">
+          Database Record: {..., final_decision: "DENY", **revelation_hash: "0x4b7c..."**}
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="width: 90%; margin-top: 30px; text-align: center; color: #ffd700; font-size: 0.9rem; font-weight: bold; padding: 10px; border: 1px dashed #ffd700; border-radius: 8px;">
+    The application continues to run quickly, but now **every single decision** is automatically and instantly locked into the immutable **REVELATION Chain**.
+  </div>
+</div>
+
+</body>
+</html>
