@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Monolithic Legacy Architecture</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* MONOLITH STYLES (Brown-Gray) */
+  .mono-title { color: #9e9e9e; }
+  .mono-box { border-color: #9e9e9e; box-shadow: 0 0 15px rgba(158, 158, 158, 0.1); }
+  .mono-bg { background: rgba(158, 158, 158, 0.05); }
+  .mono-arrow { color: #9e9e9e; }
+  .mono-detail { color: #e0e0e0; }
+
+  /* NOVAK STYLES (Electric Yellow) */
+  .novak-title { color: #ffee58; }
+  .novak-box { border-color: #ffee58; box-shadow: 0 0 15px rgba(255, 238, 88, 0.1); }
+  .novak-bg { background: rgba(255, 238, 88, 0.05); }
+  .novak-arrow { color: #ffee58; }
+  .novak-detail { color: #fff9c4; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-gray { background: rgba(158, 158, 158, 0.15); border: 1px solid #9e9e9e; color: #9e9e9e; }
+  .core-yellow { background: rgba(255, 238, 88, 0.15); border: 1px solid #ffee58; color: #ffee58; }
+  
+  /* MONOLITH SPECIFIC */
+  .monolith-structure {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="mono-title">Traditional Monolithic System</h2>
+    <div class="sub-title">Legacy Enterprise Architecture (Trust in the Lock)</div>
+
+    <div class="node mono-box mono-bg">
+      <strong>BUSINESS LOGIC</strong>
+      <span>Rules and application code bundled with the data layer.</span>
+    </div>
+    <div class="arrow mono-arrow">↓</div>
+
+    <div class="node mono-box">
+      <strong>CENTRAL SERVER</strong>
+      <span>One large server handles all computation, security, and storage.</span>
+      <div class="monolith-structure">
+        <span class="mono-detail">App Code + Data + Security Logic = ONE UNIT</span>
+      </div>
+    </div>
+    <div class="arrow mono-arrow">↓</div>
+
+    <div class="node mono-box mono-bg">
+      <strong>MUTABLE STATE DATABASE</strong>
+      <span>Data is saved in a central location, subject to any code change or admin modification.</span>
+    </div>
+    <div class="arrow mono-arrow">↓</div>
+
+    <div class="core-diff core-gray">
+      <strong>CORE RISK: SINGLE POINT OF FAILURE & TRUST</strong>
+      <span>If a single component (the app, the database, or an admin) is compromised, the integrity of the entire historical record is lost.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Integrity Overlay (Trust in the Math)</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>PROCESS EXECUTION (NIPS + NOVAK)</strong>
+      <span>Rule + Data + Final Execution State.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>REVELATION CHAINING ENGINE</strong>
+      <span>The integrity mechanism is entirely separate from the main application/database.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail" style="font-weight:bold;">NOVAK = Trust Overlay</span>
+        <span style="font-size:0.75rem;">(It observes, hashes, and records the execution)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>IMMUTABLE REVELATION CHAIN</strong>
+      <span>A separate, cryptographically protected history log, linked by math.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-yellow">
+      <strong>CORE STRENGTH: INDEPENDENT VERIFICATION</strong>
+      <span>Compromising the main database or the server does *not* compromise the integrity of the NOVAK chain, proving the entire history.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
