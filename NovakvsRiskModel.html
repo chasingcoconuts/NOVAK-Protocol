@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Enterprise Risk Model</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* RISK STYLES (Red) */
+  .risk-title { color: #ef5350; }
+  .risk-box { border-color: #ef5350; box-shadow: 0 0 15px rgba(239, 83, 80, 0.1); }
+  .risk-bg { background: rgba(239, 83, 80, 0.05); }
+  .risk-arrow { color: #ef5350; }
+  .risk-detail { color: #ffcdd2; }
+
+  /* NOVAK STYLES (Cyan/Green) */
+  .novak-title { color: #4db6ac; }
+  .novak-box { border-color: #4db6ac; box-shadow: 0 0 15px rgba(77, 182, 172, 0.1); }
+  .novak-bg { background: rgba(77, 182, 172, 0.05); }
+  .novak-arrow { color: #4db6ac; }
+  .novak-detail { color: #b2dfdb; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-red { background: rgba(239, 83, 80, 0.15); border: 1px solid #ef5350; color: #ef5350; }
+  .core-cyan { background: rgba(77, 182, 172, 0.15); border: 1px solid #4db6ac; color: #4db6ac; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="risk-title">Traditional Enterprise Risk Model</h2>
+    <div class="sub-title">Financial Recovery vs. Governance Prevention</div>
+
+    <div class="node risk-box risk-bg">
+      <strong>INHERENT GOVERNANCE RISK</strong>
+      <span>The risk that internal processes will be breached, altered, or misapplied.</span>
+    </div>
+    <div class="arrow risk-arrow">↓</div>
+
+    <div class="node risk-box">
+      <strong>INSURANCE & LIABILITY</strong>
+      <span>Risk is mitigated by paying premiums for Cyber/E&O insurance and relying on legal contracts.</span>
+      <div style="margin-top:10px;">
+        <span class="risk-detail">Risk is **transferred**, not eliminated.</span>
+      </div>
+    </div>
+    <div class="arrow risk-arrow">↓</div>
+
+    <div class="node risk-box risk-bg">
+      <strong>THE INCIDENT (P&L HIT)</strong>
+      <span>A breach occurs, insurance is paid, and reputation/stock price is damaged.</span>
+    </div>
+    <div class="arrow risk-arrow">↓</div>
+
+    <div class="core-diff core-red">
+      <strong>CORE LIMITATION: DAMAGE CONTROL</strong>
+      <span>The model relies on reactive financial recovery after a failure of governance has already happened.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Continuous, Mathematical Risk Elimination</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>NOVAK IMPLEMENTATION</strong>
+      <span>The governance rule itself is locked into the **REVELATION** chain.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>MATHEMATICAL ATTENTION</strong>
+      <span>Risk is mitigated by cryptographic proof that **100%** of all governance rules are followed, continuously.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail">Risk is **eliminated** for verifiable processes.</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>THE REVELATION CHAIN (ASSET)</strong>
+      <span>The immutable chain becomes a continuous compliance asset that **reduces audit costs** and **lowers insurance premiums**.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-cyan">
+      <strong>CORE STRENGTH: PREVENTATIVE GOVERNANCE</strong>
+      <span>The model provides **proof of absence** of governance failure, shifting the risk conversation from recovery to prevention.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
