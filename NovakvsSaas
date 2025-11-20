@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs SaaS/Managed Service Architecture</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SAAS STYLES (Teal) */
+  .saas-title { color: #26a69a; }
+  .saas-box { border-color: #26a69a; box-shadow: 0 0 15px rgba(38, 166, 154, 0.1); }
+  .saas-bg { background: rgba(38, 166, 154, 0.05); }
+  .saas-arrow { color: #26a69a; }
+  .saas-detail { color: #80cbc4; }
+
+  /* NOVAK STYLES (Purple) */
+  .novak-title { color: #ab47bc; }
+  .novak-box { border-color: #ab47bc; box-shadow: 0 0 15px rgba(171, 71, 188, 0.1); }
+  .novak-bg { background: rgba(171, 71, 188, 0.05); }
+  .novak-arrow { color: #ab47bc; }
+  .novak-detail { color: #e1bee7; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-teal { background: rgba(38, 166, 154, 0.15); border: 1px solid #26a69a; color: #26a69a; }
+  .core-purple { background: rgba(171, 71, 188, 0.15); border: 1px solid #ab47bc; color: #ab47bc; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="saas-title">Traditional SaaS / Managed Service</h2>
+    <div class="sub-title">Centralized Trust & Vendor Dependency</div>
+
+    <div class="node saas-box saas-bg">
+      <strong>DEPLOYMENT MODEL</strong>
+      <span>Customer data is processed and stored on the **Vendor's Cloud**.</span>
+    </div>
+    <div class="arrow saas-arrow">↓</div>
+
+    <div class="node saas-box">
+      <strong>TRUST IN THE VENDOR</strong>
+      <span>Integrity relies on the vendor's legal contracts, security team, and internal audits.</span>
+      <div style="margin-top:10px;">
+        <span class="saas-detail">Vendor is a central point of control and failure.</span>
+      </div>
+    </div>
+    <div class="arrow saas-arrow">↓</div>
+
+    <div class="node saas-box saas-bg">
+      <strong>SUBSCRIPTION & VISIBILITY</strong>
+      <span>Billing is subscription-based (per user/month). Vendor sees all metadata/usage data.</span>
+    </div>
+    <div class="arrow saas-arrow">↓</div>
+
+    <div class="core-diff core-teal">
+      <strong>CORE RISK: CUSTODIAL TRUST</strong>
+      <span>The customer must continuously trust the vendor not to fail, collude, or have a catastrophic security breach.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Protocol</h2>
+    <div class="sub-title">Decentralized Verification & Mathematical Trust</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>DEPLOYMENT MODEL</strong>
+      <span>The integrity engine runs **within the Customer's environment** (on-prem or private cloud).</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>TRUST IN THE MATH</strong>
+      <span>Integrity relies on the SHA-256 algorithm and the unbreakable **REVELATION** chain.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail">System integrity is mathematically enforced and auditable.</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>PROTOCOL FEE & SEGREGATION</strong>
+      <span>Cost is per-execution/per-hash. NOVAK only sees the non-sensitive **HARMONEE** proof (the hash).</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-purple">
+      <strong>CORE STRENGTH: NON-CUSTODIAL TRUST</strong>
+      <span>The integrity layer is physically and cryptographically separate from the vendor, removing single points of failure and trust requirements.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
