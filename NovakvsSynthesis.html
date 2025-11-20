@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Integrated Security Suite</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* SUITE STYLES (Navy Blue) */
+  .suite-title { color: #4fc3f7; }
+  .suite-box { border-color: #4fc3f7; box-shadow: 0 0 15px rgba(79, 195, 247, 0.1); }
+  .suite-bg { background: rgba(79, 195, 247, 0.05); }
+  .suite-arrow { color: #4fc3f7; }
+  .suite-detail { color: #b3e5fc; }
+
+  /* NOVAK STYLES (Vibrant Red) */
+  .novak-title { color: #ff5252; }
+  .novak-box { border-color: #ff5252; box-shadow: 0 0 15px rgba(255, 82, 82, 0.1); }
+  .novak-bg { background: rgba(255, 82, 82, 0.05); }
+  .novak-arrow { color: #ff5252; }
+  .novak-detail { color: #ffcdd2; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-blue { background: rgba(79, 195, 247, 0.15); border: 1px solid #4fc3f7; color: #4fc3f7; }
+  .core-red { background: rgba(255, 82, 82, 0.15); border: 1px solid #ff5252; color: #ff5252; }
+  
+  /* SUITE SPECIFIC */
+  .suite-modules {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+    line-height: 1.6;
+    text-align: left;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="suite-title">Hypothetical Security Suite</h2>
+    <div class="sub-title">Traditional Layered Approach to Security</div>
+
+    <div class="node suite-box suite-bg">
+      <strong>INPUT DATA</strong>
+      <span>Customer request enters the system boundary.</span>
+    </div>
+    <div class="arrow suite-arrow">↓</div>
+
+    <div class="node suite-box">
+      <strong>LAYERED VERIFICATION</strong>
+      <span>Security checks are performed by independent modules.</span>
+      <div class="suite-modules">
+        <span class="suite-detail">Module A: PKI (Identity Check)</span><br>
+        <span class="suite-detail">Module B: Audit Log (Access History)</span><br>
+        <span class="suite-detail">Module C: TEE (Code Integrity Check)</span>
+      </div>
+    </div>
+    <div class="arrow suite-arrow">↓</div>
+
+    <div class="node suite-box suite-bg">
+      <strong>CONFIDENCE REPORT</strong>
+      <span>A final report stating that all individual security checks passed.</span>
+    </div>
+    <div class="arrow suite-arrow">↓</div>
+
+    <div class="core-diff core-blue">
+      <strong>CORE LIMITATION: SEPARATE POINTS OF FAILURE</strong>
+      <span>Integrity relies on the trustworthiness of the *final aggregation* of reports. The historical chain of governance remains breakable.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">The Foundational Layer of Process Accountability</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>EXECUTION DATA + INTEGRITY STACK</strong>
+      <span>All inputs *from* the security suite are bundled with the governance rule.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>REVELATION CHAINING</strong>
+      <span>One single cryptographic function links the entire verifiable process into the permanent history.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail" style="font-weight:bold;">HARMONEE: The Atomic Receipt</span>
+        <span style="font-size:0.75rem;">(Integrates all proofs into a single point of truth)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash is the immutable link.</span>
+      <span>Proves: The entire, multi-step process was executed correctly and recorded permanently.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-red">
+      <strong>CORE STRENGTH: INDEPENDENT PROCESS INTEGRITY</strong>
+      <span>NOVAK layers *under* the security stack, providing the mathematical assurance that the historical governance record can *never* be broken.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
