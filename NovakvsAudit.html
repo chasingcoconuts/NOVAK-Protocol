@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Regulatory Audit Process</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* AUDIT STYLES (Light Brown) */
+  .audit-title { color: #ffe0b2; }
+  .audit-box { border-color: #ffe0b2; box-shadow: 0 0 15px rgba(255, 224, 178, 0.1); }
+  .audit-bg { background: rgba(255, 224, 178, 0.05); }
+  .audit-arrow { color: #ffe0b2; }
+  .audit-detail { color: #fff8e1; }
+
+  /* NOVAK STYLES (Blue) */
+  .novak-title { color: #4dd0e1; }
+  .novak-box { border-color: #4dd0e1; box-shadow: 0 0 15px rgba(77, 208, 225, 0.1); }
+  .novak-bg { background: rgba(77, 208, 225, 0.05); }
+  .novak-arrow { color: #4dd0e1; }
+  .novak-detail { color: #e0f7fa; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-brown { background: rgba(255, 224, 178, 0.15); border: 1px solid #ffe0b2; color: #ffe0b2; }
+  .core-blue { background: rgba(77, 208, 225, 0.15); border: 1px solid #4dd0e1; color: #4dd0e1; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="audit-title">Traditional Regulatory Audit Process</h2>
+    <div class="sub-title">Periodic, Sample-Based Verification</div>
+
+    <div class="node audit-box audit-bg">
+      <strong>TRANSACTION HAPPENS</strong>
+      <span>A financial transaction or process decision is executed.</span>
+    </div>
+    <div class="arrow audit-arrow">↓</div>
+
+    <div class="node audit-box">
+      <strong>SAMPLING & DISCOVERY (3 MONTHS LATER)</strong>
+      <span>External auditors retrieve **a subset** of records and compare them to policy manually.</span>
+      <div style="margin-top:10px;">
+        <span class="audit-detail">Goal: Find proof of *non-compliance* (i.e., find a mistake).</span>
+      </div>
+    </div>
+    <div class="arrow audit-arrow">↓</div>
+
+    <div class="node audit-box audit-bg">
+      <strong>AUDIT REPORT</strong>
+      <span>A report of findings based on the sampled data.</span>
+      <span>Proves: The sample set *appears* correct at a single point in time.</span>
+    </div>
+    <div class="arrow audit-arrow">↓</div>
+
+    <div class="core-diff core-brown">
+      <strong>CORE RISK: TIME & INCOMPLETE COVERAGE</strong>
+      <span>Audit is always retrospective (too late). Only a small sample is checked, meaning fraud/mistakes can be missed.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Continuous, Full-Coverage, Mathematical Attestation</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>TRANSACTION/RULE EXECUTION (NIPS + NOVAK)</strong>
+      <span>The rule and data are executed and immediately hashed.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>HARMONEE/REVELATION CHAINING (REAL-TIME)</strong>
+      <span>**Every single execution** (100% of data) is instantly stamped and mathematically chained.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail">Goal: Provide proof of *continuous compliance* (i.e., prove correctness).</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>VERIFIABLE REVELATION CHAIN</strong>
+      <span>An immutable, 100% complete, cryptographic audit trail.</span>
+      <span>Proves: The entire history is mathematically correct and unbroken.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-blue">
+      <strong>CORE STRENGTH: CONTINUOUS, IMMUTABLE TRUTH</strong>
+      <span>Audit is instantaneous. Integrity covers 100% of all data. Tampering is mathematically impossible without breaking the chain.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
