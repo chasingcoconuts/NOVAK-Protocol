@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Use Case: VA Claim Decision</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 3px solid #87ceeb; /* Blue for official/government */
+    width: 1100px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(135, 206, 235, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #ffd700; /* Gold */
+  }
+
+  h2 { 
+    color: #87ceeb; /* Blue */
+    font-size: 1.2rem; 
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+
+  .scenario-box {
+    width: 90%;
+    background: #0a0a0d;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    text-align: left;
+    border: 1px solid #303038;
+  }
+  .scenario-box strong { color: #87ceeb; }
+
+  .flow-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+  }
+
+  .flow-step {
+    flex-basis: 30%;
+    background: #252530;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    min-height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  }
+  .flow-step h3 {
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .flow-step p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ccc;
+  }
+  .flow-step strong {
+      display: block;
+      margin-bottom: 5px;
+  }
+
+  /* Specific Step Styling */
+  .step-1 { border: 3px solid #ff6347; }
+  .step-1 h3 { color: #ff6347; }
+  .step-1 strong { color: #ffd700; }
+
+  .step-2 { border: 3px solid #32cd32; }
+  .step-2 h3 { color: #32cd32; }
+  .step-2 strong { color: #00bcd4; }
+
+  .step-3 { border: 3px solid #ffd700; }
+  .step-3 h3 { color: #ffd700; }
+  .step-3 strong { color: #87ceeb; }
+
+  .arrow {
+    font-size: 3rem;
+    color: #87ceeb;
+    margin: 0 15px;
+    font-weight: bold;
+  }
+  
+  .conclusion-box {
+    margin-top: 40px;
+    padding: 20px;
+    width: 95%;
+    border: 3px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>NOVAK Use Case: VA Claim Decision Integrity</h1>
+  <h2>Securing the Multi-Step Adjudication Process for Veterans Benefits</h2>
+
+  <div class="scenario-box">
+    <strong>Scenario:</strong> A Veterans Affairs (VA) claim moves through several stages (medical review, legal review, final approval). Each step is a critical decision based on specific rules. NOVAK ensures that the final benefit decision is based on an **unbroken, auditable sequence of validated steps**, not just the final entry.
+  </div>
+
+  <div class="flow-container">
+    
+    <div class="flow-step step-1">
+      <h3>1. Initial Decision Step (Medical)</h3>
+      <p>
+        <strong>Action:</strong> Medical reviewer assigns a disability rating (0-100%).<br>
+        <strong>NOVAK Rule:</strong> References specific C.F.R. disability schedule rule.<br>
+        <strong>NIPS Data:</strong> Medical findings, reviewer ID, assigned rating.
+      </p>
+      <p>Generates **HARMONEE** proof for the medical finding.</p>
+    </div>
+    
+    <div class="arrow">→</div>
+
+    <div class="flow-step step-2">
+      <h3>2. Legal Review Step</h3>
+      <p>
+        <strong>Action:</strong> Legal team reviews medical rating and determines eligibility.<br>
+        <strong>NOVAK Rule:</strong> References legal statute for service connection.<br>
+        <strong>NIPS Data:</strong> Eligibility status, legal findings, previous step's **REVELATION** hash.
+      </p>
+      <p>Generates **HARMONEE** proof for the legal decision, linked to the chain.</p>
+    </div>
+    
+    <div class="arrow">→</div>
+
+    <div class="flow-step step-3">
+      <h3>3. Final Adjudication</h3>
+      <p>
+        <strong>Action:</strong> Final system approval grants benefit percentage.<br>
+        <strong>NOVAK Rule:</strong> References the final approval policy.<br>
+        <strong>NIPS Data:</strong> Final percentage, full decision summary, current step's **REVELATION** hash.
+      </p>
+      <p>The final step in the **REVELATION** chain seals the decision.</p>
+    </div>
+    
+  </div>
+
+  <div class="conclusion-box">
+    **Result:** Any appeal or audit can verify the entire history—from medical rating to final percentage—against the **immutable NOVAK Rules**. It eliminates ambiguity, speeds appeals, and proves that all mandated procedures were followed precisely (**Law of Process Integrity**).
+  </div>
+
+</div>
+
+</body>
+</html>
