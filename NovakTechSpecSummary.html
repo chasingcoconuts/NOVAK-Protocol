@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Protocol: Technical Integration Specification</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 3px solid #87ceeb; /* Blue for technical focus */
+    width: 1100px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(135, 206, 235, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #ffd700; /* Gold */
+  }
+
+  h2 { 
+    color: #87ceeb; /* Blue */
+    font-size: 1.2rem; 
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+  }
+
+  .specs-container {
+    display: flex;
+    justify-content: space-between;
+    width: 95%;
+  }
+  
+  .spec-section {
+    flex-basis: 48%;
+    padding: 20px;
+    border-radius: 10px;
+    background: #252530;
+  }
+  
+  .spec-section h3 {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+    color: #00bcd4; /* Cyan */
+  }
+
+  .spec-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .spec-item {
+    margin-bottom: 15px;
+    padding: 10px 0;
+    border-bottom: 1px dashed #303038;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .spec-item strong {
+    display: inline-block;
+    width: 200px; /* Aligns key terms */
+    color: #ffd700;
+    font-weight: bold;
+  }
+  
+  .spec-item span {
+      color: #32cd32; /* Green for key technical values */
+      font-weight: bold;
+  }
+  
+  .requirement {
+      color: #ff6347;
+      font-weight: bold;
+  }
+  
+  .conclusion-box {
+    margin-top: 40px;
+    padding: 20px;
+    width: 95%;
+    border: 3px solid #ffd700;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #ffd700;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>Technical Integration Specification</h1>
+  <h2>Non-Negotiable Standards for Implementation and Verification</h2>
+
+  <div class="specs-container">
+    
+    <div class="spec-section">
+      <h3>I. Core Technology Requirements</h3>
+      <ul class="spec-list">
+        <li class="spec-item">
+          <strong>Hashing Algorithm:</strong> <span>SHA-256</span> (Universal Standard)<br>
+        </li>
+        <li class="spec-item">
+          <strong>Maximum Latency:</strong> <span>< 5 Milliseconds</span> (Per transaction attestation)<br>
+        </li>
+        <li class="spec-item">
+          <strong>Rule Format Standard:</strong> <span>JSON / YAML</span> (Must be deterministic)<br>
+        </li>
+        <li class="spec-item">
+          <strong>Data Encoding:</strong> <span>UTF-8 Canonical Form</span> (Strict input sorting required)<br>
+        </li>
+        <li class="spec-item">
+          <strong>Integration Model:</strong> <span>Sidecar or RESTful API</span> (Non-intrusive to core business logic)<br>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="spec-section">
+      <h3>II. Operational Mandates</h3>
+      <ul class="spec-list">
+        <li class="spec-item">
+          <strong>Rule Management:</strong> **Immutable Versioning** <span class="requirement">(Law of Governance Policy)</span><br>
+        </li>
+        <li class="spec-item">
+          <strong>NIPS Timestamp:</strong> **Non-mutable** <span class="requirement">(Must be synchronized/secured source)</span><br>
+        </li>
+        <li class="spec-item">
+          <strong>Verification Client:</strong> **Open Source Reference** <span class="requirement">(Ensures third-party audit capability)</span><br>
+        </li>
+        <li class="spec-item">
+          <strong>Proof Storage:</strong> **Independent Journal** <span class="requirement">(REVELATION chain stored separate from NIPS)</span><br>
+        </li>
+        <li class="spec-item">
+          <strong>Failure Mode:</strong> **Execute Denied** <span class="requirement">(If HARMONEE generation fails, the transaction must halt)</span><br>
+        </li>
+      </ul>
+    </div>
+    
+  </div>
+
+  <div class="conclusion-box">
+    Compliance is defined by adherence to these standards. NOVAK's design ensures **Universal Verifiability** using industry-standard cryptography, meeting the requirements of the most demanding enterprise environments.
+  </div>
+
+</div>
+
+</body>
+</html>
