@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Traditional Trust-Based Governance</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* HUMAN STYLES (Orange-Yellow) */
+  .human-title { color: #ffab40; }
+  .human-box { border-color: #ffab40; box-shadow: 0 0 15px rgba(255, 171, 64, 0.1); }
+  .human-bg { background: rgba(255, 171, 64, 0.05); }
+  .human-arrow { color: #ffab40; }
+  .human-detail { color: #ffe0b2; }
+
+  /* NOVAK STYLES (White) */
+  .novak-title { color: #f5f5f5; }
+  .novak-box { border-color: #f5f5f5; box-shadow: 0 0 15px rgba(245, 245, 245, 0.1); }
+  .novak-bg { background: rgba(245, 245, 245, 0.05); }
+  .novak-arrow { color: #f5f5f5; }
+  .novak-detail { color: #e0e0e0; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-orange { background: rgba(255, 171, 64, 0.15); border: 1px solid #ffab40; color: #ffab40; }
+  .core-white { background: rgba(245, 245, 245, 0.15); border: 1px solid #f5f5f5; color: #f5f5f5; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="human-title">Traditional Trust-Based Governance</h2>
+    <div class="sub-title">Reliance on Institutional Oversight</div>
+
+    <div class="node human-box human-bg">
+      <strong>TRUST REQUIRED</strong>
+      <span>Trust the employee, the executive, the regulator, or the auditor.</span>
+    </div>
+    <div class="arrow human-arrow">↓</div>
+
+    <div class="node human-box">
+      <strong>PERIODIC VERIFICATION & AUDIT</strong>
+      <span>Verification relies on **human judgment**, legal agreements, and organizational checks.</span>
+      <div style="margin-top:10px;">
+        <span class="human-detail">Audits are intermittent and based on samples.</span>
+      </div>
+    </div>
+    <div class="arrow human-arrow">↓</div>
+
+    <div class="node human-box human-bg">
+      <strong>FALLIBLE RECORD</strong>
+      <span>The integrity of the history is vulnerable to collusion, incompetence, or malice.</span>
+    </div>
+    <div class="arrow human-arrow">↓</div>
+
+    <div class="core-diff core-orange">
+      <strong>CORE RISK: THE HUMAN ELEMENT</strong>
+      <span>Governance success is a function of human ethics, leading to inevitable single points of trust failure.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Protocol</h2>
+    <div class="sub-title">Governance Based on Mathematical Certainty</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>TRUST ELIMINATED</strong>
+      <span>Trust is derived entirely from the SHA-256 math and the unbreakability of the chain.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>CONTINUOUS CRYPTOGRAPHIC ATTESTATION</strong>
+      <span>Verification relies on **deterministic hash functions** that prove the execution of rules.</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail">Attestation is instantaneous and covers 100% of all events.</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>IMMUTABLE REVELATION CHAIN</strong>
+      <span>Integrity is mathematically guaranteed, providing an independent source of truth.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-white">
+      <strong>CORE STRENGTH: MATHEMATICAL GUARANTEE</strong>
+      <span>NOVAK replaces the need for institutional trust with a self-proving, continuous, and objective record of governance.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
