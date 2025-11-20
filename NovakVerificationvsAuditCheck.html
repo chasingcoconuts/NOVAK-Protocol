@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Verification Flow: The Auditor's Check</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 { 
+    text-align: center; 
+    text-transform: uppercase; 
+    letter-spacing: 3px; 
+    font-size: 1.6rem; 
+    margin: 0 0 10px 0; 
+    color: #4dd0e1; /* Cyan */
+  }
+  .sub-title { 
+    text-align: center; 
+    color: #777; 
+    font-size: 0.9rem; 
+    margin-bottom: 30px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+  }
+
+  .flow-container {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding-top: 40px;
+  }
+  
+  /* NODE STYLES */
+  .node {
+    flex-basis: 22%;
+    border: 3px solid;
+    border-radius: 12px;
+    padding: 20px 15px;
+    text-align: center;
+    background: #0a0a0d;
+    position: relative;
+    z-index: 2;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .node-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+    display: block;
+    text-transform: uppercase;
+  }
+  .node-role {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .node-desc {
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: #ddd;
+  }
+
+  /* COMPONENT COLORS */
+  .c-input { border-color: #ff6347; } /* Red */
+  .c-data { border-color: #ffd700; } /* Gold */
+  .c-hash { border-color: #32cd32; } /* Green */
+  .c-proof { border-color: #4dd0e1; } /* Cyan */
+  
+  .c-input .node-title { color: #ff6347; }
+  .c-data .node-title { color: #ffd700; }
+  .c-hash .node-title { color: #32cd32; }
+  .c-proof .node-title { color: #4dd0e1; }
+
+  /* ARROWS AND LINES */
+  .arrow {
+    font-size: 2rem;
+    color: #4dd0e1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 -10px;
+    position: relative;
+    font-weight: bold;
+    opacity: 0.8;
+  }
+
+  .audit-icon {
+    font-size: 4rem;
+    color: #ffd700;
+    margin-bottom: 20px;
+  }
+  
+  .verification-step {
+    font-size: 1rem;
+    color: #f5f5f5;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px;
+    background: #333;
+    border-radius: 6px;
+  }
+  
+  .final-result {
+    margin-top: 30px;
+    padding: 20px;
+    border: 2px solid #32cd32;
+    background: rgba(50, 205, 50, 0.1);
+    border-radius: 8px;
+    font-size: 1.1rem;
+    color: #32cd32;
+    font-weight: bold;
+    text-align: center;
+    width: 80%;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <div class="audit-icon">🔍</div>
+  <h2>NOVAK Verification: From History to Proof</h2>
+  <div class="sub-title">How an external party validates the integrity of a single transaction</div>
+
+  <div class="flow-container">
+    
+    <div class="node c-input">
+      <span class="node-title">External Auditor Starts</span>
+      <span class="node-role">The Trustless Query</span>
+      <span class="node-desc">The auditor chooses a transaction's record and retrieves its stored **REVELATION Hash** and **NIPS Data**.</span>
+    </div>
+    
+    <div class="arrow">↓</div>
+    
+    <div class="node c-data">
+      <span class="node-title">Input: REVELATION History</span>
+      <span class="node-role">The Claimed History</span>
+      <span class="node-desc">The auditor receives: **Previous REVELATION Hash**, **NOVAK Rule**, and the **NIPS Data** (Input/Output).</span>
+    </div>
+
+    <div class="arrow">↓</div>
+    
+    <div class="node c-hash">
+      <span class="node-title">Step 1: Re-Generate HARMONEE</span>
+      <span class="node-role">The Cryptographic Proof</span>
+      <span class="node-desc">The auditor independently hashes **(Rule + NIPS Data + Timestamp)** to regenerate the expected **HARMONEE** receipt.</span>
+    </div>
+    
+    <div class="arrow">↓</div>
+
+    <div class="node c-proof">
+      <span class="node-title">Step 2: Re-Generate REVELATION</span>
+      <span class="node-role">The Chain Link Check</span>
+      <span class="node-desc">The auditor then hashes **(Previous REVELATION Hash + Expected HARMONEE)** to generate the final, expected **REVELATION Hash**.</span>
+    </div>
+    
+  </div>
+  
+  <div class="verification-step">
+    The expected final hash is compared against the actual **REVELATION Hash** stored in the database.
+  </div>
+  
+  <div class="final-result">
+    IF EXPECTED HASH = STORED HASH &rarr; **INTEGRITY IS MATHEMATICALLY PROVEN**
+  </div>
+  
+  <div style="width: 90%; margin-top: 30px; text-align: center; color: #777; font-size: 0.8rem; padding: 10px;">
+    NOVAK enables **instant, deterministic audit** of 100% of the governance history, replacing retrospective sampling with mathematical certainty.
+  </div>
+
+</div>
+
+</body>
+</html>
