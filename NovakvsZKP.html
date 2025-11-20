@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Zero-Knowledge Proof Architecture</title>
+<style>
+  body { 
+    background: #14141c; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #1e1e26;
+    border: 1px solid #3a3a45;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #1e1e26;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #bbb;
+    z-index: 2;
+    border: 1px solid #555;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #3a3a45;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #888; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* ZKP STYLES (Pink/Violet) */
+  .zkp-title { color: #d670ff; }
+  .zkp-box { border-color: #d670ff; box-shadow: 0 0 15px rgba(214, 112, 255, 0.1); }
+  .zkp-bg { background: rgba(214, 112, 255, 0.05); }
+  .zkp-arrow { color: #d670ff; }
+
+  /* NOVAK STYLES (Orange) */
+  .novak-title { color: #ffae19; }
+  .novak-box { border-color: #ffae19; box-shadow: 0 0 15px rgba(255, 174, 25, 0.1); }
+  .novak-bg { background: rgba(255, 174, 25, 0.05); }
+  .novak-arrow { color: #ffae19; }
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #111116;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-violet { background: rgba(214, 112, 255, 0.15); border: 1px solid #d670ff; color: #d670ff; }
+  .core-orange { background: rgba(255, 174, 25, 0.15); border: 1px solid #ffae19; color: #ffae19; }
+  
+  /* ZKP SPECIFIC */
+  .zkp-math {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="zkp-title">Zero-Knowledge Proof (ZKP)</h2>
+    <div class="sub-title">System of Privacy & Correctness (e.g., Zcash, Ethereum L2)</div>
+
+    <div class="node zkp-box zkp-bg">
+      <strong>SECRET KNOWLEDGE (W)</strong>
+      <span>Private data (e.g., "I am over 18", "My salary is > $50k").</span>
+    </div>
+    <div class="arrow zkp-arrow">↓</div>
+
+    <div class="node zkp-box">
+      <strong>PROOF GENERATION</strong>
+      <span>Prover runs a complex cryptographic ceremony (SNARK/STARK).</span>
+      <div class="zkp-math">
+        **PROVER** → Computes Proof *p* based on Secret *w*
+      </div>
+    </div>
+    <div class="arrow zkp-arrow">↓</div>
+
+    <div class="node zkp-box zkp-bg">
+      <strong>THE PROOF (p)</strong>
+      <span>A small, public math result.</span>
+      <span>Proof that the statement is true, *without* revealing **W**.</span>
+    </div>
+    <div class="arrow zkp-arrow">↓</div>
+
+    <div class="core-diff core-violet">
+      <strong>PRIMARY GOAL: CONFIDENTIALITY</strong>
+      <span>To prove a calculation or statement is true while keeping the input data private.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Deterministic Governance Layer (Verifiable Accountability)</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>PUBLIC INPUT (NIPS + NOVAK)</strong>
+      <span>Verified Data + Enforcement Rule + Timestamp</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>CHAINING/HARMONEE CALCULATION</strong>
+      <span>SHA-256 hashes all components to generate the receipt.</span>
+      <div style="margin-top:10px;">
+        <span style="color:#ffae19; font-size:0.8rem; font-weight:bold;">HASH (PREV_HASH + RULE + DATA)</span>
+        <span style="font-size:0.75rem;">(The receipt **is** the record)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash is the public, immutable audit link.</span>
+      <span>Proof that the rule was followed exactly using the data.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-orange">
+      <strong>PRIMARY GOAL: ACCOUNTABILITY</strong>
+      <span>To provide an immutable, mathematically verifiable audit trail of every single decision made.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
