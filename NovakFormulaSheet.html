@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Protocol: Core Formulas</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 900px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #4CAF50; /* Green */
+  }
+
+  h2 { 
+    color: #ffd700; /* Gold */
+    font-size: 1.2rem; 
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .formula-section {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 25px;
+    border-radius: 10px;
+    border: 2px solid #555;
+    background: #1f1f2a;
+  }
+
+  .formula-section h3 {
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    margin-top: 0;
+    margin-bottom: 10px;
+    border-bottom: 2px solid;
+    padding-bottom: 5px;
+  }
+
+  .formula-box {
+    background: #0a0a0d;
+    padding: 15px;
+    border-radius: 6px;
+    font-family: 'Consolas', monospace;
+    font-size: 1rem;
+    overflow-x: auto;
+  }
+  
+  .formula-box .term {
+    font-weight: bold;
+    color: #ffd700;
+  }
+  
+  .formula-box .func {
+    color: #87ceeb;
+  }
+  
+  .formula-box .input {
+    color: #ff6347;
+  }
+  
+  .formula-box .prev {
+    color: #4CAF50;
+  }
+  
+  .explanation {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #ccc;
+  }
+  
+  /* Styling for HARMONEE Section */
+  .harmonee-section h3 { border-color: #32cd32; color: #32cd32; }
+  /* Styling for REVELATION Section */
+  .revelation-section h3 { border-color: #ffd700; color: #ffd700; }
+  
+  .final-synthesis {
+    margin-top: 40px;
+    padding: 20px;
+    width: 90%;
+    border: 2px solid #00bcd4;
+    background: rgba(0, 188, 212, 0.1);
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #00bcd4;
+    font-weight: bold;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>The Cryptographic Engine</h1>
+  <h2>NOVAK's Core Hashing Formulas</h2>
+
+  <div class="formula-section harmonee-section">
+    <h3>The HARMONEE Receipt (Proof of Execution)</h3>
+    <div class="formula-box">
+      <span class="term">HARMONEE</span> = <span class="func">SHA-256</span> (
+        <span class="input">NOVAK_RULE</span> + 
+        <span class="input">NIPS_DATA</span> + 
+        <span class="input">TIMESTAMP</span>
+      )
+    </div>
+    <div class="explanation">
+      This is the atomic, time-stamped proof of a single transaction. It cryptographically binds the exact **Rule** used and the **NIPS Data** (Input/Output) into a unique receipt. Any alteration of the rule or data makes the **HARMONEE** invalid.
+    </div>
+  </div>
+
+  <div class="formula-section revelation-section">
+    <h3>The REVELATION Chain (Immutable History)</h3>
+    <div class="formula-box">
+      <span class="term">NEW_REVELATION_HASH</span> = <span class="func">SHA-256</span> (
+        <span class="prev">PREVIOUS_REVELATION_HASH</span> + 
+        <span class="term">HARMONEE_RECEIPT</span>
+      )
+    </div>
+    <div class="explanation">
+      This is the perpetual linkage mechanism. It takes the hash of the **previous** transaction's final proof (the chain state) and combines it with the **current HARMONEE** receipt. This ensures that changing any prior HARMONEE (or NIPS data) instantly invalidates every subsequent **REVELATION** hash.
+    </div>
+  </div>
+
+  <div class="final-synthesis">
+    **HARMONEE** proves the *current transaction's integrity*. **REVELATION** proves the *entire history's integrity*.
+  </div>
+
+</div>
+
+</body>
+</html>
