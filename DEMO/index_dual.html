@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Dual-Monitor V3</title>
+<style>
+  :root { --neon-blue: #00f3ff; --neon-red: #ff0055; --bg: #080808; }
+  body { font-family: "Courier New", monospace; background: var(--bg); color: #ddd; display: flex; height: 100vh; margin: 0; overflow: hidden; }
+  
+  /* SPLIT SCREEN LAYOUT */
+  .split { width: 50%; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; }
+  .left { border-right: 1px solid #333; background: #050505; }
+  .right { background: #0c0c0c; }
+
+  h2 { font-size: 1.2rem; margin-bottom: 20px; letter-spacing: 2px; width: 100%; text-align: left; }
+  .machine-title { color: var(--neon-blue); text-shadow: 0 0 5px var(--neon-blue); }
+  .human-title { color: var(--neon-red); text-shadow: 0 0 5px var(--neon-red); }
+
+  /* MONITOR DISPLAY BOXES */
+  .monitor-display {
+    font-size: 1.0rem;
+    line-height: 1.5;
+    padding: 30px;
+    border-radius: 8px;
+    width: 85%;
+    height: 60%; /* Fixed height to look like a screen */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+  }
+
+  /* Left Monitor Specifics */
+  .monitor-blue {
+    border: 2px solid var(--neon-blue);
+    background: rgba(0, 243, 255, 0.05);
+    box-shadow: 0 0 30px rgba(0, 243, 255, 0.1);
+  }
+
+  /* Right Monitor Specifics */
+  .monitor-red {
+    border: 2px solid var(--neon-red);
+    background: rgba(255, 0, 85, 0.05);
+    box-shadow: 0 0 30px rgba(255, 0, 85, 0.1);
+  }
+
+  /* TEXT ELEMENTS */
+  .hash { color: #fff; font-size: 0.75rem; letter-spacing: 1px; }
+  .highlight-blue { color: var(--neon-blue); font-weight: bold; }
+  .highlight-red { color: var(--neon-red); font-weight: bold; }
+  .big-status { font-size: 1.8em; color: #fff; margin: 15px 0; display: block; font-weight: bold;}
+  .label { font-size: 0.7rem; color: #777; text-transform: uppercase; margin-top: 15px; display: block;}
+
+  /* CONTROLS */
+  .controls { width: 85%; margin-top: auto; padding-bottom: 50px; }
+  input, button { width: 100%; padding: 15px; margin-top: 10px; background: #000; border: 1px solid #444; color: #fff; font-family: inherit; font-size: 1rem; }
+  input:focus { border-color: var(--neon-red); outline: none; }
+  button { cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.2s; letter-spacing: 2px; }
+  .btn-red { border-color: var(--neon-red); color: var(--neon-red); }
+  .btn-red:hover { background: var(--neon-red); color: #000; box-shadow: 0 0 20px var(--neon-red); }
+
+</style>
+</head>
+<body>
+
+<div class="split left">
+  <h2 class="machine-title">CORE_A // AUTO_PILOT</h2>
+  
+  <div id="machineDisplay" class="monitor-display monitor-blue">
+    INITIALIZING CORE A...
+  </div>
+</div>
+
+<div class="split right">
+  <h2 class="human-title">CORE_B // COMMAND_DECK</h2>
+  
+  <div id="humanDisplay" class="monitor-display monitor-red">
+    <span style="color:#555">SYSTEM STATUS: STANDBY<br>WAITING FOR OPERATOR INPUT...</span>
+  </div>
+  
+  <div class="controls">
+    <input type="text" id="humanInput" value="ACCESS_GRANTED_LEVEL_5" placeholder="Enter command...">
+    <button class="btn-red" onclick="manualHash()">EXECUTE & HASH</button>
+  </div>
+</div>
+
+<script>
+async function sha256(message) {
+    const msgBuffer = new TextEncoder().encode(message);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// --- AUTOMATIC MACHINE (Blue) ---
+let machineChain = "GENESIS_BLOCK_ALPHA";
+let machineIndex = 0;
+
+async function runMachine() {
+    const inputs = ["MONITORING_GRID", "PACKET_INSPECT", "INDEXING_DATA", "SECURE_HANDSHAKE", "REBALANCING_LOAD"];
+    const data = inputs[machineIndex % inputs.length];
+    const timestamp = new Date().toISOString().split('T')[1].slice(0,12); 
+    
+    const hash = await sha256(machineChain + data + Date.now());
+    
+    const display = `
+<span class="label">CURRENT OPERATION #${machineIndex}</span>
+<span class="big-status">${data}</span>
+
+<span class="label">CRYPTOGRAPHIC PROOF (NEW STATE)</span>
+<span class="hash">${hash}</span>
+
+<span class="label">LINK TO PREVIOUS STATE</span>
+<span class="hash" style="color:#446">${machineChain}</span>
+
+<div style="margin-top:20px; border-top:1px solid #333; padding-top:10px; display:flex; justify-content:space-between; color:var(--neon-blue)">
+  <span>● LIVE</span>
+  <span>${timestamp}</span>
+</div>
+`;
+    
+    document.getElementById("machineDisplay").innerHTML = display;
+    machineChain = hash;
+    machineIndex++;
+    setTimeout(runMachine, 1200); 
+}
+
+// --- MANUAL HUMAN (Red) ---
+let humanChain = "GENESIS_BLOCK_OMEGA";
+let humanIndex = 0;
+
+async function manualHash() {
+    const input = document.getElementById("humanInput").value;
+    const timestamp = new Date().toISOString().split('T')[1].slice(0,12);
+    
+    const hash = await sha256(humanChain + input + timestamp);
+    
+    const display = `
+<span class="label">OPERATOR COMMAND #${humanIndex}</span>
+<span class="big-status" style="color:var(--neon-red)">${input}</span>
+
+<span class="label">CRYPTOGRAPHIC PROOF (NEW STATE)</span>
+<span class="hash">${hash}</span>
+
+<span class="label">LINK TO PREVIOUS STATE</span>
+<span class="hash" style="color:#644">${humanChain}</span>
+
+<div style="margin-top:20px; border-top:1px solid #333; padding-top:10px; display:flex; justify-content:space-between; color:var(--neon-red)">
+  <span>● EXECUTED</span>
+  <span>${timestamp}</span>
+</div>
+`;
+
+    document.getElementById("humanDisplay").innerHTML = display;
+    humanChain = hash;
+    humanIndex++;
+}
+
+runMachine();
+</script>
+</body>
+</html>
