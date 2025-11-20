@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Design Philosophy</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1100px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #00bcd4; /* Cyan */
+  }
+
+  h2 { 
+    color: #ffd700; /* Gold */
+    font-size: 1.2rem; 
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .comparison-grid {
+    display: flex;
+    justify-content: space-around;
+    width: 90%;
+    margin-bottom: 40px;
+  }
+
+  .pillar {
+    flex-basis: 40%;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  }
+
+  .pillar-traditional {
+    background: #3a1a1a;
+    border: 3px solid #ff6347; /* Red */
+  }
+
+  .pillar-novak {
+    background: #1a3a1a;
+    border: 3px solid #32cd32; /* Green */
+  }
+
+  .pillar-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  
+  .pillar-traditional .pillar-title { color: #ff6347; }
+  .pillar-novak .pillar-title { color: #32cd32; }
+
+  .key-metric {
+    text-align: left;
+    margin-bottom: 15px;
+    font-size: 1rem;
+  }
+  
+  .key-metric strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+
+  .metric-red { color: #ffcdd2; }
+  .metric-green { color: #c8e6c9; }
+  .metric-red-strong { color: #ff6347; }
+  .metric-green-strong { color: #32cd32; }
+
+  /* Connector */
+  .connector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    font-size: 1.2rem;
+    color: #ffd700;
+    padding: 10px 20px;
+    background: #101015;
+    border: 2px solid #ffd700;
+    border-radius: 50px;
+    white-space: nowrap;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+  }
+  
+  .synthesis-box {
+      margin-top: 40px;
+      width: 90%;
+      padding: 25px;
+      border: 3px solid #87ceeb;
+      background: rgba(135, 206, 235, 0.1);
+      border-radius: 12px;
+      font-size: 1.1rem;
+      color: #87ceeb;
+      font-weight: bold;
+      text-align: center;
+  }
+  .synthesis-box strong {
+      color: #ffd700;
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 10px;
+  }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>The NOVAK Design Philosophy</h1>
+  <h2>Shifting the Core of Enterprise Trust</h2>
+
+  <div class="comparison-grid">
+
+    <div class="pillar pillar-traditional">
+      <div class="pillar-title">Trust Model: Traditional</div>
+      
+      <div class="key-metric">
+        <strong>Source of Trust:</strong>
+        <span class="metric-red">Human Authority</span> (Auditors, Admins, Employees)
+      </div>
+      
+      <div class="key-metric">
+        <strong>Integrity Metric:</strong>
+        <span class="metric-red">Permissions & Sampling</span>
+        <span class="metric-red-strong">(Verifies 1% of transactions)</span>
+      </div>
+      
+      <div class="key-metric">
+        <strong>Risk Status:</strong>
+        <span class="metric-red">Contingent Liability</span> (Reactive, subject to fraud/error)
+      </div>
+       <div class="key-metric">
+        <strong>Evidence Reliability:</strong>
+        <span class="metric-red">Mutable Logs</span> (Logs can be edited or deleted)
+      </div>
+    </div>
+    
+    <div class="connector">NOVAK BRIDGE</div>
+
+    <div class="pillar pillar-novak">
+      <div class="pillar-title">Trust Model: NOVAK</div>
+      
+      <div class="key-metric">
+        <strong>Source of Trust:</strong>
+        <span class="metric-green">Cryptographic Certainty</span> (SHA-256 Math)
+      </div>
+      
+      <div class="key-metric">
+        <strong>Integrity Metric:</strong>
+        <span class="metric-green">Continuous Hashing</span>
+        <span class="metric-green-strong">(Verifies 100% of transactions)</span>
+      </div>
+      
+      <div class="key-metric">
+        <strong>Risk Status:</strong>
+        <span class="metric-green">Verifiable Asset</span> (Proactive, risk quantified to zero)
+      </div>
+      <div class="key-metric">
+        <strong>Evidence Reliability:</strong>
+        <span class="metric-green">Immutable Chain</span> (Tamper-evident, history secured)
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="synthesis-box">
+    <strong>NOVAK: The Protocol of Proof</strong>
+    NOVAK fundamentally shifts the audit burden from **human scrutiny** to **mathematical integrity**, permanently eliminating the audit gap.
+  </div>
+</div>
+
+</body>
+</html>
