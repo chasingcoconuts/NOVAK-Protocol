@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Permissioned Blockchain</title>
+<style>
+  body { 
+    background: #121216; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #1a1a20;
+    border: 1px solid #333;
+    width: 1000px;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 40px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #1a1a20;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #333;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #666; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* PERMISSIONED STYLES (Orange-Red) */
+  .perm-title { color: #ff6e40; }
+  .perm-box { border-color: #ff6e40; box-shadow: 0 0 15px rgba(255, 110, 64, 0.1); }
+  .perm-bg { background: rgba(255, 110, 64, 0.05); }
+  .perm-arrow { color: #ff6e40; }
+
+  /* NOVAK STYLES (Cyan) */
+  .novak-title { color: #00f3ff; }
+  .novak-box { border-color: #00f3ff; box-shadow: 0 0 15px rgba(0, 243, 255, 0.1); }
+  .novak-bg { background: rgba(0, 243, 255, 0.05); }
+  .novak-arrow { color: #00f3ff; }
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #444;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #999; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CONSORTIUM GRID */
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 95%;
+    margin-top: 10px;
+  }
+  .grid-item {
+    padding: 8px;
+    background: #333;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+  }
+  .grid-item strong { display: block; font-size: 0.8rem; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+  }
+  .core-red { background: rgba(255, 0, 0, 0.15); border: 1px solid #ff6e40; color: #ff6e40; }
+  .core-blue { background: rgba(0, 0, 255, 0.15); border: 1px solid #00f3ff; color: #00f3ff; }
+
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="perm-title">Permissioned Blockchain</h2>
+    <div class="sub-title">Hyperledger / Supply Chain / Consortium</div>
+
+    <div class="node perm-box perm-bg">
+      <strong>INPUT</strong>
+      <span>A Transaction (e.g., "Shipment received")</span>
+    </div>
+    <div class="arrow perm-arrow">↓</div>
+
+    <div class="node perm-box">
+      <strong>CONSENSUS MECHANISM</strong>
+      <span>Agreement among known parties.</span>
+      <div class="grid">
+        <div class="grid-item"><strong>NODE A</strong> (Bank)</div>
+        <div class="grid-item"><strong>NODE B</strong> (Logistics)</div>
+        <div class="grid-item"><strong>NODE C</strong> (Manufacturer)</div>
+        <div class="grid-item"><strong>NODE D</strong> (Regulator)</div>
+      </div>
+    </div>
+    <div class="arrow perm-arrow">↓</div>
+
+    <div class="node perm-box perm-bg">
+      <strong>SHARED LEDGER</strong>
+      <span>Replicated data across all nodes.</span>
+      <span>Proof that all parties saw the same data.</span>
+    </div>
+    <div class="arrow perm-arrow">↓</div>
+
+    <div class="core-diff core-red">
+      <strong>CORE FLAW: TRUST IN CONSORTIUM</strong>
+      <span>If all four parties collude, the data can still be altered or suppressed.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Deterministic Governance Layer (NIPS/IPS)</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>INPUT (NIPS + NOVAK)</strong>
+      <span>Data + Enforcement Rule + Timestamp</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>SINGLE-NODE PROOF ENGINE</strong>
+      <span>SHA-256 links input, rule, and previous state.</span>
+      <div style="margin-top:10px;">
+        <span style="color:#00f3ff; font-size:0.8rem; font-weight:bold;">HARMONEE RECIEPT</span>
+        <span style="font-size:0.75rem;">(The proof of execution)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION CHAIN</strong>
+      <span>Single-source, immutable audit trail.</span>
+      <span>Proof that the rule was followed exactly.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-blue">
+      <strong>CORE STRENGTH: TRUST IN MATH</strong>
+      <span>Does not require consensus. The truth relies on the math, which cannot collude.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
