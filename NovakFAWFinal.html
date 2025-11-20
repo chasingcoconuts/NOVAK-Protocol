@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK Protocol: Key FAQs</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 { 
+    text-transform: uppercase; 
+    letter-spacing: 5px; 
+    font-size: 2.5rem; 
+    margin: 0 0 10px 0; 
+    color: #00bcd4; /* Cyan */
+  }
+
+  h2 { 
+    color: #ffd700; /* Gold */
+    font-size: 1.2rem; 
+    margin-bottom: 40px;
+    letter-spacing: 2px;
+  }
+
+  .faq-container {
+    width: 90%;
+    text-align: left;
+  }
+
+  .faq-item {
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #303038;
+  }
+
+  .question {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #4CAF50; /* Green */
+    margin-bottom: 8px;
+  }
+
+  .answer {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #ccc;
+    padding-left: 15px;
+    border-left: 3px solid #87ceeb; /* Blue */
+  }
+
+  .answer strong {
+    color: #ffd700;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <h1>Key Questions & Answers</h1>
+  <h2>Addressing NOVAK's Implementation and Scope</h2>
+
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <div class="question">Q: Does NOVAK replace our existing database or transaction system?</div>
+      <div class="answer">
+        A: **No.** NOVAK is a cryptographic **integrity layer**. It functions as a sidecar service to your existing applications, utilizing the <strong style="color:#ff6347;">NIPS</strong> component to pull data, generate the proof (<strong style="color:#32cd32;">HARMONEE</strong>), and chain the result (<strong style="color:#ffd700;">REVELATION</strong>). Your core business logic and database remain untouched.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="question">Q: What is the performance impact of generating a HARMONEE receipt?</div>
+      <div class="answer">
+        A: The cost is negligible. **SHA-256 hashing is extremely fast.** The latency added to a transaction is typically in the low single-digit milliseconds (under 5ms) on modern hardware, making the process virtually real-time and suitable for high-frequency environments.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="question">Q: How can a third-party auditor verify the REVELATION chain without our systems?</div>
+      <div class="answer">
+        A: They only need three things: 1) The **NOVAK Rule** file, 2) The corresponding **NIPS Data** for the transaction, and 3) The **Previous REVELATION Hash**. Using standard SHA-256 libraries (available everywhere), they can independently regenerate the <strong style="color:#32cd32;">HARMONEE</strong> and the final <strong style="color:#ffd700;">REVELATION</strong> hash. If their result matches the stored hash, the proof is mathematically certain.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="question">Q: What stops someone from changing the NOVAK Rule file later?</div>
+      <div class="answer">
+        A: The **Law of Tamper Evidence** ensures this is caught. The original <strong style="color:#32cd32;">HARMONEE</strong> receipt was generated *using the original rule*. If the rule is changed, regenerating the chain for verification will instantly produce a completely different hash, failing the audit. The rule itself must be managed immutably (e.g., via version control locked by multiple parties).
+      </div>
+    </div>
+    
+  </div>
+
+  <div style="margin-top: 40px; color: #87ceeb; font-size: 1.1rem; font-weight: bold;">
+    NOVAK: Mathematical integrity, zero performance impact, universal verifiability.
+  </div>
+
+</div>
+
+</body>
+</html>
