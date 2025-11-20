@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>NOVAK vs Confidential Computing Architecture</title>
+<style>
+  body { 
+    background: #101015; 
+    font-family: 'Segoe UI', Roboto, monospace;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+  }
+
+  .canvas {
+    background: #181820;
+    border: 1px solid #303038;
+    width: 1000px;
+    padding: 50px;
+    border-radius: 16px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    display: flex;
+    gap: 50px;
+    position: relative;
+  }
+
+  /* CENTER DIVIDER */
+  .canvas::before {
+    content: "VS";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #181820;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-weight: bold;
+    color: #999;
+    z-index: 2;
+    border: 1px solid #444;
+  }
+  .canvas::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 1px;
+    background: #303038;
+    z-index: 1;
+  }
+
+  .column { flex: 1; display: flex; flex-direction: column; align-items: center; }
+
+  h2 { text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; margin: 0 0 5px 0; }
+  .sub-title { color: #777; font-size: 0.8rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
+
+  /* TEE STYLES (Light Green) */
+  .tee-title { color: #81c784; }
+  .tee-box { border-color: #81c784; box-shadow: 0 0 15px rgba(129, 199, 132, 0.1); }
+  .tee-bg { background: rgba(129, 199, 132, 0.05); }
+  .tee-arrow { color: #81c784; }
+  .tee-detail { color: #c8e6c9; }
+
+  /* NOVAK STYLES (Orange) */
+  .novak-title { color: #ff8a65; }
+  .novak-box { border-color: #ff8a65; box-shadow: 0 0 15px rgba(255, 138, 101, 0.1); }
+  .novak-bg { background: rgba(255, 138, 101, 0.05); }
+  .novak-arrow { color: #ff8a65; }
+  .novak-detail { color: #ffccbc; }
+
+
+  /* BOXES */
+  .node {
+    width: 85%;
+    border: 2px solid #555;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    margin-bottom: 15px;
+    background: #0a0a0d;
+    position: relative;
+  }
+
+  .node strong { display: block; font-size: 0.95rem; margin-bottom: 5px; }
+  .node span { font-size: 0.75rem; color: #aaa; line-height: 1.4; display: block; }
+
+  .arrow { font-size: 1.5rem; margin: 5px 0 15px 0; opacity: 0.5; }
+
+  /* CORE DIFFERENCE BOXES */
+  .core-diff {
+    width: 90%;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  .core-green { background: rgba(129, 199, 132, 0.15); border: 1px solid #81c784; color: #81c784; }
+  .core-orange { background: rgba(255, 138, 101, 0.15); border: 1px solid #ff8a65; color: #ff8a65; }
+  
+  /* TEE SPECIFIC */
+  .tee-security {
+    background: #2a2a2a;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    color: #ddd;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <div class="column">
+    <h2 class="tee-title">Confidential Computing (TEE)</h2>
+    <div class="sub-title">Proof of Current Execution Integrity</div>
+
+    <div class="node tee-box tee-bg">
+      <strong>PRIVATE DATA & CODE</strong>
+      <span>Encrypted data is sent into the secure enclave (TEE).</span>
+    </div>
+    <div class="arrow tee-arrow">↓</div>
+
+    <div class="node tee-box">
+      <strong>TRUSTED EXECUTION ENVIRONMENT (TEE)</strong>
+      <span>Code runs isolated from OS/Hypervisor/Admin.</span>
+      <div class="tee-security">
+        <span class="tee-detail">Hardware-enforced Memory Protection.</span>
+      </div>
+    </div>
+    <div class="arrow tee-arrow">↓</div>
+
+    <div class="node tee-box tee-bg">
+      <strong>ATTESTATION REPORT</strong>
+      <span>A digital signature proving: **(1)** The code running is correct, and **(2)** It ran inside a secure enclave.</span>
+    </div>
+    <div class="arrow tee-arrow">↓</div>
+
+    <div class="core-diff core-green">
+      <strong>PRIMARY GOAL: VERIFY THE CURRENT MOMENT</strong>
+      <span>To ensure that data and code are protected and executed correctly **at the moment of computation**.</span>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2 class="novak-title">NOVAK Architecture</h2>
+    <div class="sub-title">Perpetual Integrity of Governance History</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>VERIFIABLE DATA & RULE</strong>
+      <span>Execution output (NIPS) + Governance Rule (NOVAK).</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box">
+      <strong>REVELATION CHAINING</strong>
+      <span>SHA-256 links the previous hash to the current execution result (HARMONEE).</span>
+      <div style="margin-top:10px;">
+        <span class="novak-detail" style="font-weight:bold;">HASH (PREV_HASH + NEW_EXECUTION)</span>
+      </div>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="node novak-box novak-bg">
+      <strong>REVELATION HASH</strong>
+      <span>The new hash is the immutable chain link.</span>
+      <span>Proves: The output was **correctly recorded** and **linked** to all prior, verifiable history.</span>
+    </div>
+    <div class="arrow novak-arrow">↓</div>
+
+    <div class="core-diff core-orange">
+      <strong>PRIMARY GOAL: VERIFY THE ENTIRE HISTORY</strong>
+      <span>To ensure that the record of all decisions is unbroken and mathematically tamper-proof **for all time**.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
