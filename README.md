@@ -55,13 +55,15 @@ Public challenge suite
 
 🟧 HISTORICAL EVOLUTION TABLE
 
-(As requested — NOVAK replaces all prior names. Previous models remain for historical context only.)
-
 Era	Name	Status	Evolution Notes
 Phase 1	NIPS (Novak Input Proof Set)	Historical	Input canonicalization + proof; now integrated directly into NOVAK Input Verification.
+
 Phase 2	HARMONEE	Historical	Early execution-identity recorder; replaced by NOVAK Deterministic Execution Receipt.
+
 Phase 3	REVELATION	Historical	Recursive hashing model; replaced by NOVAK RGAC (Recursive Global Attestation Chain).
+
 Phase 4	Codex Drafts	Historical reference only	These drafts helped shape the formal laws; terminology now removed.
+
 Phase 5	NOVAK	Canonical	The unified, complete, simplified, post-discovery enforcement model.
 
 NOVAK fully replaces all previous naming systems.
