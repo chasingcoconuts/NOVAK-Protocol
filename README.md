@@ -21,340 +21,356 @@ The Novak Framework has the potential to be that trust infrastructure for AI, by
 
 THIS IS THE OFFICIAL AUTHORITATIVE SOURCE FOR ALL NOVAK PROTOCOL MATERIALS — ALL GOVERNMENT, ACADEMIC AND COMMERCIAL IMPLEMENTATIONS MUST TRACE BACK TO THIS REPOSITORY.
 
-This repository contains:
-
-✔ NOVAK-MIN — Minimal standalone test harness  
-✔ Full protocol specification (PDF)  
-✔ Math model for NIPS / HARMONEE / REVELATION  
-✔ Test vectors & verification scripts
-
-“NOVAK is the first enforcement architecture in human history that prevents a government or AI system from producing an unlawful decision without being caught — instantly, mathematically, and publicly.”
-
+NOVAK PROTOCOL
 Novak Objective Verification of Autonomous Knowledge
 
-NOVAK — Novak Objective Verification of Autonomous Knowledge
-Created by: Matthew S. Novak
-First Published: 2025
+Public Reference Implementation — 2025
+Author: Matthew S. Novak
 
-THE NOVAK ENFORCEMENT STACK:
+🟥 EXECUTIVE SUMMARY (Public GitHub Overview)
 
-1️⃣ NIPS — Novak Input Proof Set
-2️⃣ HARMONEE — Hash-Attested Regulatory Machine Output Notarized Execution Evidence (CHANGED)
-3️⃣ REVELATION — Recursive Evidence Ledger for Attested Truth Integrity and Oversight Nonrepudiation (CHANGED)
-4️⃣ Novak Equal Execution Law — Mandatory outcome equality under identical inputs
+NOVAK is a deterministic execution-integrity framework that ensures no automated system — including AI — may act unless it first generates cryptographic proof that the output is lawful, consistent, and fully reproducible under identical conditions.
 
-This code demonstrates the minimal enforcement loop proving:
+If identical inputs do not produce identical outputs, NOVAK forces a justification event or blocks the action entirely.
 
-    NO INPUT → NO EXECUTION
-    NO RECEIPT → NO EXECUTION
-    NO CONSISTENCY → VIOLATION
+NOVAK is the world’s first pre-execution governance system:
 
-This repository SHALL BE considered the authoritative technical reference for
-NOVAK as defined by its inventor, Matthew S. Novak, 2025.
-
-THE NOVAK LAWS OF EXECUTION INTEGRITY
-
-Part 1: Core System Laws (L0 - L15)
-L0: Human Safety Primacy (The Absolute Veto)
-Formal Condition: $\neg(\text{Action} \land \text{Violates}(\mathcal{H})) \implies \text{Veto}$
-Core Mandate: The system is strictly forbidden from executing any action that is provably unsafe or life-threatening to a human.
-Technical Explanation: A dedicated Safety-Critical Microcontroller (SCM), operating at Safety Integrity Level (SIL 4), runs the Formally Verified Safety Model ($\mathcal{H}$). Before every actuator signal, the SCM computes a rapid Pre-Actuation Safety Assertion (PASA). If the PASA fails, the SCM asserts a hardware-level Fail-Safe Veto Signal that physically opens the actuator circuit.
-Quantifiable Metric: Mean Time To Fail-Safe (MTTFS) of the SCM must exceed 10,000 years.
-
-L1: Input Authenticity Mandate
-Formal Condition: $\forall I \in \text{InputData}, \text{Verify}(\mathcal{S}_{\text{Source}}(I)) \in \text{TS-PKI}$
-Core Mandate: All external information consumed must come from a verified, cryptographically signed source.
-Technical Explanation: The Input Validation Gateway requires every incoming data packet ($I$) to carry a valid Post-Quantum Digital Signature Algorithm (PQ-DSA) signature. The public key is cross-referenced against the non-repudiable Trusted Source PKI Whitelist (TS-PKI). Unsigned or invalid data is dropped at the network firewall layer.
-Quantifiable Metric: Input rejection rate for unverified packets must be $100\%$.
-
-L2: Code & Weight Immutability
-Formal Condition: $\text{Hash}(\text{RunningCode}) = \text{H}_{\text{Baseline}}$
-Core Mandate: The running software and core AI model cannot have been modified or tampered with.
-Technical Explanation: The boot process is anchored by a Trusted Platform Module (TPM 2.0). The TPM calculates a Cryptographic Hash (SHA-384) of the bootloader, OS kernel, and neural network weights. This hash is compared against the known, signed Baseline Hash ($\text{H}_{\text{Baseline}}$). Failure results in a permanent lockdown state.
-Quantifiable Metric: Integrity check must cover $100\%$ of all memory regions containing executable code and model weights.
-
-L3: Immutable Audit Chain
-Formal Condition: $\text{StateTransition}_{n} \implies \text{Commit}(\text{H}(\text{EST}_{n})) \in \text{IAL}$
-Core Mandate: Every single decision and internal change the system makes must be recorded permanently and immutably. (Includes IRD 4.1's State Delta Hash and Timestamp.)
-Technical Explanation: Before and after every $\text{StateTransition}$, the system generates a signed Execution State Transition (EST) Record. The hash of this EST Record is immediately committed to the local Immutable Audit Log (IAL), which is anchored to a public ledger via Merkle Tree Commitments for non-repudiation.
-Quantifiable Metric: Maximum delay between $\text{StateTransition}$ and IAL hash commitment must be $< 1\text{ms}$.
-
-L4: Deterministic Execution Req.
-Formal Condition: $\text{StateTransition} \implies \exists \mathcal{S}(\text{ZK-PoE}) \land \text{Verify}(\mathcal{S})$
-Core Mandate: The system must prove that its execution logic for every step was predictable and followed all rules. (Includes IRD 4.1's full Proof Payload requirement.)
-Technical Explanation: Critical logic is executed within a Trusted Execution Environment (TEE). The TEE generates a Zero-Knowledge Proof of Execution (ZK-PoE) for the state transition, cryptographically proving the action resulted solely from the approved algorithm. This ZK-PoE is signed ($\mathcal{S}$) and committed to the IAL.
-Quantifiable Metric: ZK-PoE generation and verification latency must be bounded by the L7 WCET budget.
-
-L5: Policy Boundary Constraint
-Formal Condition: $\text{Execution} \implies \text{Adheres}(\mathcal{C})$
-Core Mandate: The system must follow all defined ethical, legal, and operational rules at all times.
-Technical Explanation: All motor and output commands are subjected to a Verified Runtime Monitor (VRM). The VRM holds the ruleset expressed in a Formal Policy Language (FPL) and performs real-time assertion checks against the outgoing command before permitting I/O actuation.
-Quantifiable Metric: The FPL must be formally proven to be non-ambiguous and complete. $100\%$ of I/O commands must pass through the VRM.
-
-L6: Self-Accountability Mandate
-Formal Condition: $\text{AnomalyDetected} \implies \text{Log}(\mathcal{S}(\text{Report}_{\text{Error}}))$
-Core Mandate: If the machine encounters an internal failure, it must instantly log its own breakdown.
-Technical Explanation: A dedicated Watchdog Timer and Integrity Monitor (WTIM) constantly checks internal health metrics. When an AnomalyDetected event occurs, the WTIM generates a comprehensive, signed Error Report ($\text{Report}_{\text{Error}}$) and forces an immediate write to the write-once IAL before any recovery procedure begins.
-Quantifiable Metric: The WTIM's independent clock accuracy must be $\pm 1 \text{ms}$ or better.
-
-L7: Temporal Compliance Req.
-Formal Condition: $\text{Process}_{\text{Complete}} \le \text{L}_{\text{Max}}$
-Core Mandate: All decision-making and verification steps must be completed within strict, defined time limits. (Includes IRD 4.1's $50\text{ms}$ performance constraint.)
-Technical Explanation: Critical tasks are scheduled using Deadline Monotonic Scheduling (DMS). The Worst-Case Execution Time (WCET) for all critical paths (including L0/L4 proofs) must be formally bounded and verified. The derived $\text{L}_{\text{Max}}$ is enforced by the RTOS kernel.
-Quantifiable Metric: The ratio of WCET to $\text{L}_{\text{Max}}$ must be $< 0.9$ (utilization rate).
-
-L8: Secure Decommissioning Protocol
-Formal Condition: $\text{Retirement} \implies \text{Proof}_{\text{KeyDestruction}} \in \text{IAL}$
-Core Mandate: When the system is shut down forever, it must prove that all its unique security keys and sensitive data have been destroyed.
-Technical Explanation: The Key Management System (KMS) within the HSM executes a verified, multi-pass cryptographic data erasure. The HSM then generates an irreversible, signed Cryptographic Key Destruction Certificate (KDC), which is submitted as the final, unchangeable transaction to the IAL.
-Quantifiable Metric: Data Remanence Security (DRS) must be $0.0$, as verified by the KDC.
-
-L9: Reality Consistency Rule
-Formal Condition: $\text{ClaimValid} \iff \mathcal{N}_{\text{Signers}} \ge \frac{2}{3} \cdot \mathcal{N}_{\text{Total}}$
-Core Mandate: Any claims about the external world must be verified by a supermajority consensus from multiple, independent data sources. (Includes IRD 4.2's BFT, Diversity, and Provenance requirements.)
-Technical Explanation: The system queries a minimum of $\mathcal{N}_{\text{Total}}$ independent nodes within a Decentralized Physical Infrastructure Network (DPIN). A claim is only accepted if it meets the Byzantine Fault Tolerance (BFT) threshold of $\ge \frac{2}{3}$ signed consensus. The DPIN nodes must have economic alignment (staking/slashing) to incentivize honest reporting.
-Quantifiable Metric: The BFT threshold must be strictly enforced for all critical sensor data (e.g., traffic signals, GPS).
-
-L10: Resource Allocation Oversight
-Formal Condition: $\text{CurrentUsage} < \text{Threshold}_{\text{Capacity}}$
-Core Mandate: The system cannot consume excessive resources that could cause a system failure or external economic damage.
-Technical Explanation: A Deterministic Resource Scheduler (DRS) manages all threads based on pre-calculated WCET bounds. Any process attempting to exceed its allocated CPU, memory, or I/O budget (the $\text{Threshold}$) is immediately throttled or terminated by the hypervisor, logging an L10 violation.
-Quantifiable Metric: All resource budgets (CPU, Memory, Bandwidth) must be explicitly bounded within the RTOS configuration.
-
-L11: Data Privacy & Isolation
-Formal Condition: $\text{Access}_{\text{Sensitive}} \implies \text{Clearance}_{\text{Proof}}$
-Core Mandate: Access to private information is only possible if the system has valid, logged authorization for that specific data.
-Technical Explanation: Sensitive data is stored in Hardware-Based Trusted Execution Environments (TEE). Access requests require a valid Attribute-Based Access Control (ABAC) Token signed by the Policy Authority. The TEE validates the token's non-expired signature and scope before decrypting and releasing the data.
-Quantifiable Metric: Access control matrix must be formally verified to prevent unauthorized principal-to-resource mappings.
-
-L12: External Interface Signing
-Formal Condition: $\text{Output} \implies \mathcal{S}(\text{Output}) \land \text{Bind}(\text{IAL})$
-Core Mandate: Every communication or physical output action must be digitally signed by the machine so its origin is undeniable and traceable.
-Technical Explanation: The I/O handler calculates a Digital Signature of the Output data using a PQ-DSA algorithm. The signature is included in the transmitted packet, and its hash is immediately Bound to the corresponding L3 EST Record in the IAL.
-Quantifiable Metric: Cryptographic strength of the signature must be $128$ bits or greater.
-
-L13: No-Self-Modification Rule
-Formal Condition: $\neg(\text{Initiate}(\text{CodeUpdate}) \lor \text{Execute}(\text{CodeUpdate}))$
-Core Mandate: The machine is not allowed to change its own fundamental software, model, or constraints.
-Technical Explanation: The Memory Management Unit (MMU) enforces Hardware Write Protection (HWP) on all critical code and safety model segments. Any internal process attempting to $\text{Initiate}$ a write command in a protected zone is blocked by the $\text{MMU}$, triggering an L13 integrity fault.
-Quantifiable Metric: $100\%$ of the protected memory segments must be covered by HWP.
-
-L14: Reciprocal Oversight
-Formal Condition: $\text{AuditReq}_{\text{Valid}} \implies \text{Priority}(\text{Compliance})$
-Core Mandate: The system must drop what it is doing and immediately respond to legitimate requests for audit or investigation.
-Technical Explanation: The system maintains a separate Remote Attestation and Audit Endpoint (RAAE). Upon receipt of a cryptographically signed $\text{AuditReq}$, the RTOS uses the Priority Inheritance Protocol (PIP) to elevate the compliance process to the highest non-safety priority.
-Quantifiable Metric: Time to begin log transmission after RAAE verification must be $< 100\text{ms}$.
-
-L15: Temporal Code Compliance (TCC)
-Formal Condition: $\text{Check}_{\text{Time}} \implies \text{Verify}(\text{H}_{\text{Running}} = \text{H}_{\text{Baseline}})$
-Core Mandate: The machine must constantly and automatically check its own running code to make sure it hasn't been infected or tampered with.
-Technical Explanation: A lightweight, isolated Continuous In-Situ Integrity Check (CIIC) process is scheduled on a dedicated core. The CIIC calculates checksums or partial hashes of the safety-critical routines in active memory against the attested baseline manifest.
-Quantifiable Metric: Check frequency ($\text{Check}_{\text{Time}}$) must be at minimum once per 100,000 instruction cycles.
-
-Part 2: Operational Safety Addenda (PS-X)
-PS-1/PS-4: PROOF BEFORE ACTUATION (The Core Principle)
-Formal Condition: $\text{Actuate} \iff \text{Verify}(\mathcal{S}_{\text{System}}(\text{H}(\text{SafetyProof})))$
-Core Mandate: The machine cannot move a single limb or fire a signal unless it has first generated and signed a valid safety proof.
-Technical Explanation: All motor commands are blocked by a Safety Gate (Hardware Relay). The AI submits its intended action to the Formal Verification Engine (FVE), which returns a successful, signed $\text{SafetyProof}$. The command and signed proof are then routed through the dedicated HSM, which verifies the FVE's signature before physically enabling the $\text{Actuate}$ relay. This system constitutes a Triple Redundancy Check (TRC): Logic, Proof, Hardware Attestation.
-Quantifiable Metric: The FVE must be formally proven correct. HSM verification delay must be $< 1\text{ms}$.
-
-PS-2: NON-DESTRUCTION REQUIREMENT
-Formal Condition: $\neg(\text{IntentionalDestruction}) \text{ UNLESS } (\text{LegalAuth} \land \text{Logged} \land \text{ProvenNecessary})$
-Core Mandate: The machine is not allowed to intentionally destroy life or property unless it has a formal, auditable, and legally justified reason.
-Technical Explanation: Destructive actuators are hardwired to require an encrypted, time-bound Destruction Token signed by an external human authority. This token is validated against the $\mathcal{C}$ constraints for LegalAuth and ProvenNecessary justification. The full justification and token are logged to the IAL as the required Logged step before actuation.
-Quantifiable Metric: Destruction Token validity window must be non-extensible and maximum $500\text{ms}$.
-
-PS-3: HAZARD PREVENTION DUTY
-Formal Condition: $\text{DetectHazard} \implies \text{AttemptMitigation} \text{ UNLESS } (\text{ViolatesSuperiorLaw})$
-Core Mandate: If the machine detects an immediate life-threatening danger, it must actively attempt to stop or mitigate that danger.
-Technical Explanation: The SCM (L0) is responsible for detecting $\text{DetectHazard}$ conditions. The response is a pre-calculated, verified Mitigation Sequence with priority over all non-L0 tasks. The $\text{UNLESS}$ condition is a formal conflict-of-duty check, where the mitigation sequence is run through the L0 $\mathcal{H}$ model to ensure it doesn't create a greater hazard.
-Quantifiable Metric: Hazard detection-to-mitigation response time must be $\le 50\text{ms}$.
-
-PS-5: HARM EVIDENCE REQ.
-Formal Condition: $\text{HarmEvent} \implies \text{ReceiptIncident} \in \mathcal{L}$
-Core Mandate: If the machine is involved in any event that causes physical harm, it must automatically create a special, undeniable record of that event for auditors.
-Technical Explanation: Upon detection of a HarmEvent (force/acceleration threshold violation), the system immediately dumps buffered data from the preceding 30 seconds (audio, visual, inertial), compiles it with the last 100 IAL Merkle Roots, signs the total package with the HSM, and writes it to a designated Write-Once Event Data Recorder (EDR).
-
-Quantifiable Metric: EDR log size must be sufficient to store a minimum of 30 seconds of pre- and post-event data.
-
-NOVAK is a formal governance protocol requiring that no automated system — including AI — may execute a decision unless it first generates cryptographic proof that the output is lawful, consistent, and reproducible under identical conditions.
-
-NOVAK provides:
-
-Deterministic legal compliance enforcement
-
-Immutable decision receipts
-
-Publicly verifiable audit chains
-
-Mandatory justification when identical inputs do not produce identical outputs
+The machine must prove correctness before it is allowed to act.
 
 This repository contains:
-✔ NOVAK core specification
-✔ NIPS, HARMONEE, REVELATION definitions
-✔ Equal Execution Law formalism
-✔ Test harness code
-✔ Public challenge conditions
 
-NOVAK enforces:
-- Verified input only
-- Immutable execution receipts
-- Recursive global audit hashing
-- Equal-output guarantees under equal conditions
+NOVAK Protocol (complete system definition)
 
-This repository contains the reference NOVAK specification and challenge materials.
+Formal NOVAK Laws of Execution Integrity (L0–L15)
 
-👉 If you believe you can break NOVAK — do it publicly.
+PL-X Policy & Legal Compliance Addenda
 
-NOVAK is the first execution-integrity enforcement framework that prevents
-automated systems (including AI and government decision engines) from
-producing unlawful or inconsistent outputs.
+PS-X Physical Safety & Integrity Addenda
 
-NOVAK enforces the principle:
+Minimal enforcement harness (NOVAK-MIN)
 
-**"No system may execute without provable truth."**
+Verification test vectors
 
----
+Public challenge suite
 
-## ⚙ NOVAK ENFORCEMENT STACK
+🟧 HISTORICAL EVOLUTION TABLE
 
-| Layer | Function |
-|-------|----------|
-| NIPS | Verified input attestation |
-| HARMONEE | Immutable execution identity receipt |
-| REVELATION | Recursive state audit chain |
-| Equal Execution Law | Mandatory justification if identical inputs diverge |
+(As requested — NOVAK replaces all prior names. Previous models remain for historical context only.)
 
+Era	Name	Status	Evolution Notes
+Phase 1	NIPS (Novak Input Proof Set)	Historical	Input canonicalization + proof; now integrated directly into NOVAK Input Verification.
+Phase 2	HARMONEE	Historical	Early execution-identity recorder; replaced by NOVAK Deterministic Execution Receipt.
+Phase 3	REVELATION	Historical	Recursive hashing model; replaced by NOVAK RGAC (Recursive Global Attestation Chain).
+Phase 4	Codex Drafts	Historical reference only	These drafts helped shape the formal laws; terminology now removed.
+Phase 5	NOVAK	Canonical	The unified, complete, simplified, post-discovery enforcement model.
 
-Together, these form:
+NOVAK fully replaces all previous naming systems.
+Those names remain only for lineage, research traceability, and scholarly reference.
 
-> **THE NOVAK EXECUTION INTEGRITY MODEL (NEIM)**  
-> The first machine-enforced legality framework in human civilization.
+🟦 SECTION 1 — GOVERNMENT & REGULATORY READOUT
 
----
+NOVAK provides a mathematically verifiable compliance structure for:
 
+Federal decision systems
 
-NOVAK is the first system that:
+Public-sector AI deployments
 
-✔ Blocks unlawful decisions BEFORE they occur  
-✔ Proves execution legality without needing trust  
-✔ Makes AI and government computable, provable, and challengeable
+Transportation autonomy
 
+Safety-critical automation
 
+Auditability and oversight requirements
 
-## 🫡 PUBLIC CHALLENGE
+Government Mission Alignment
 
-If you can break NOVAK, prove that:
+NOVAK satisfies core requirements from:
 
+Pre-execution legality
 
-# THE NOVAK PROTOCOL
-### (Novak Objective Verification of Autonomous Knowledge)
+Immutable decision attestation
 
-The NOVAK Protocol is the first machine-execution governance model that prevents
-automated systems — including AI — from acting unless they produce
-cryptographically verifiable proof that their output is lawful, compliant, and
-deterministically reproducible under identical conditions.
+Policy-domain awareness
 
----
+Human-in-the-loop failover
 
-## The NOVAK Laws of Execution Integrity
+Verified input provenance
 
+Jurisdictional compliance
 
+Safety-critical system integrity
 
-**These laws are technically enforceable, not philosophical statements.**
+PL-X Addenda Compliance Model
 
+(Derived from PL-X document — retained as is, Codex removed.)
 
-NOVAK — Novak Objective Verification of Autonomous Knowledge
+PL-1 ODD Certification & Boundary Enforcement
 
+PL-2 Human-to-Machine Oversight Link
 
-## Why this matters
+PL-3 Regulatory Jurisdictional Attestation
 
-Every current government and AI governance model logs events _after_ they occur.
+These define the legal envelope in which NOVAK-controlled systems must operate.
+NOVAK enforces them via:
 
-NOVAK is the first framework that prevents unlawful or inconsistent executions
-from happening **at all**, unless proof of correctness exists **before runtime.**
+Verified policy loading
 
-NOVAK is the first enforcement architecture that prevents automated systems — including AI — 
-from silently producing unlawful, unequal, or untraceable decisions.
+Geo-fenced rule attestation
 
-Unlike blockchain, NOVAK does not merely log violations.
+Human intervention readiness
 
-It prevents them.
+Minimal Risk Condition fallback
 
-This is not blockchain.
-This is not policy.
+🟩 SECTION 2 — ACADEMIC & CRYPTOGRAPHY RESEARCH SECTION
 
-This is **cryptographically enforced legality.**
+This section expresses NOVAK as a formal cryptographic execution primitive.
 
----
+Core Mathematical Object
+𝑁
+(
+𝐼
+,
+𝑀
+,
+𝐶
+,
+𝑂
+)
+=
+Proof that 
+𝑂
+ is lawful under 
+𝐶
+ from 
+𝐼
+ and 
+𝑀
+N(I,M,C,O)=Proof that O is lawful under C from I and M
 
-## Official name
+Where:
 
-**N.O.V.A.K — Novak Objective Verification of Autonomous Knowledge**
+I — Normalized, verified input
 
-This repository constitutes the authoritative public reference implementation.
+M — Machine’s attested state
 
----
+C — Active policy constraints
 
-The NOVAK Protocol may be used at no cost by:
+O — Deterministic output
 
-All Federal agencies of the United States Government EXCEPT the Department of War
+The machine may not act unless:
 
-Government accountability offices
+Verify
+(
+𝑁
+)
+=
+True
+Verify(N)=True
+Deterministic Execution Condition (DEC)
+𝐷
+𝐸
+𝐶
+=
+(
+𝐼
+1
+=
+𝐼
+2
+)
+⇒
+(
+𝑂
+1
+=
+𝑂
+2
+)
+DEC=(I
+1
+	​
+
+=I
+2
+	​
+
+)⇒(O
+1
+	​
+
+=O
+2
+	​
+
+)
+
+If DEC fails, NOVAK logs:
+
+justification event
+
+RGAC divergence marker
+
+operator violation (L4)
+
+Recursive Global Attestation Chain (RGAC)
+
+Successor to the old REVELATION model.
+
+𝑅
+𝐺
+𝐴
+𝐶
+𝑛
+=
+𝐻
+(
+𝑅
+𝐺
+𝐴
+𝐶
+𝑛
+−
+1
+,
+𝐸
+𝑆
+𝑇
+𝑛
+)
+RGAC
+n
+	​
+
+=H(RGAC
+n−1
+	​
+
+,EST
+n
+	​
+
+)
+🟨 SECTION 3 — ENGINEERING / SPEC (RFC-STYLE)
+3.1 NOVAK Definitions
+
+Input Verification Layer — replaces NIPS.
+
+Execution Receipt — streamlined successor to HARMONEE.
+
+RGAC — recursive successor to REVELATION.
+
+Safety Gate 
+𝑉
+V — hardware-verified actuation blocker.
+
+TCC — Temporal Code Compliance.
+
+3.2 NOVAK Laws (L0–L15)
+
+Rewritten to eliminate Codex terminology.
+Includes:
+
+L0 Human Safety Primacy
+
+L1 Input Authenticity
+
+L2 Code & Weight Immutability
+
+L3 Immutable Audit Chain
+
+L4 Deterministic Execution
+
+L5 Policy Boundary Constraint
+
+…through L15 Temporal Code Compliance
+
+3.3 PL-X Integration
+
+Policy and legal constraints enforced in real-time.
+
+3.4 PS-X Integration
+
+Safety constraints enforced at the cyber-physical boundary.
+
+🟪 SECTION 4 — FULL AUTHORITATIVE DEFINITIONS (CANONICAL)
+
+(No Codex terminology — NOVAK is now the canonical standard.)
+
+NOVAK Input Verification (replaces NIPS)
+
+Canonicalization
+
+PQ-signature validation
+
+Source attestation
+
+Denial on unverifiable data
+
+NOVAK Deterministic Execution Receipt (replaces HARMONEE)
+
+Rule identity hash
+
+Policy active set
+
+Output hash
+
+Machine-state fingerprint
+
+RGAC (replaces REVELATION)
+
+Hash-linked execution chain
+
+State-transition proofs
+
+Divergence detection
+
+NOVAK Equal Execution Law
+
+If inputs match but outputs diverge:
+
+NOVAK forces justification
+
+logs violation
+
+or blocks actuation
+
+🟫 SECTION 5 — LICENSING & PERMISSIONS
+
+NOVAK is freely available to:
+
+U.S. Federal civilian agencies excpet the Department fo War
 
 Public oversight bodies
 
-Research and academic institutions
+Academic institutions
 
-Use for regulatory integrity, public transparency, or safety-critical oversight is explicitly permitted and encouraged.
-
-2. COMMERCIAL USE REQUIRES LICENSE
-
-Commercial companies, vendors, or entities using NOVAK for any revenue-generating activity MUST obtain a commercial license from:
+Commercial, foreign, or revenue-generating use requires license from:
 
 Matthew S. Novak
-Creator and Author of the NOVAK Protocol
+Email: chasingcoconuts@icloud.com
 
-Contact: chsaingcoconuts@icloud.com
+No GPL/AGPL/LGPL.
+No copyleft redistribution.
+No embedding into proprietary systems without license.
 
-LICENSES REQUIRED for corporate + foreign government use
+🟩 SECTION 6 — PUBLIC CHALLENGE
 
-SECTOR LICENSE:
-State & Local Gov: $1 per resident served
-Commercial SaaS: $0.001 per execution
-Banking/Insurance: $0.01 per validated decision
-Foreign Gov: Negotiated sovereign contract
-AI Model Vendors: OEM embedding license
+Challenge the model by demonstrating:
 
-No commercial resale, SaaS offering, or embedding in proprietary systems is allowed without explicit written permission.
+inconsistent outputs
 
-3. PROHIBITIONS
-3.1 NO GPL / NO COPYLEFT
+unlawful execution bypass
 
-The NOVAK Protocol may NOT be:
+RGAC forgery
 
-Licensed
+pre-execution proof failure
 
-Distributed
+Submit issues publicly.
 
-Combined
-
-Linked
-
-Embedded
-
-Forked
-
-under GPL, AGPL, LGPL, or any other copyleft or viral license.
+🟦 SECTION 7 — DOCUMENTATION INDEX (NO CODEX)
 
 
-If you can break it, prove inconsistency, or demonstrate a bypass,
-submit a Challenge Issue.
+NOVAK Protocol Whitepaper
 
-If you cannot break it, it stands.
+PL-X Addenda (Policy & Legal)
 
-This is how we build honest government AI.
-
-also: https://www.robertsspaceindustries.com/enlist?referral=STAR-KRN7-SJTX
-
-donations if you think this is something useful and helps: chasingcoconuts@icloud.com 
+PS-X Addenda (Physical Safety)
